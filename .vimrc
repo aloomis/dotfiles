@@ -58,7 +58,7 @@ set smartcase
 " Enable enhanced command line completion
 set wildmenu
 set wildmode=list:longest
-set wildignore=*.o,moc_*.cpp,*targetfs*
+set wildignore=*.o,moc_*.cpp,*.class,*targetfs*
 
 " Automatically read a file that is changed outside of vim
 set autoread
@@ -108,7 +108,7 @@ set ruler
 set pastetoggle=<F9>
 
 " Setup completion options
-set completeopt=menu,menuone
+set completeopt=menu,menuone,longest
 set pumheight=10
 
 " Setup conceal options
