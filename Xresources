@@ -1,0 +1,54 @@
+! Xft Settings -----------------------------------------------------------------
+
+Xft.dpi:        144
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+
+! URXVT Settings ---------------------------------------------------------------
+
+URxvt*font:                             xft:Hack:size=10
+URxvt*lineSpace:                        4
+URxvt*letterSpace:                      -1
+URxvt*scrollBar:                        false
+URxvt*saveLines:                        number
+URxvt*cursorBlink:                      true
+URxvt*urgentOnBell:                     true
+URxvt.intensityStyles:                  false
+
+URxvt*perl-lib:                         /usr/lib/urxvt/perl
+URxvt*perl-ext-common:                  default,clipboard,url-select
+URxvt*iso14755:                         false
+URxvt*iso14755_52:                      false
+
+URxvt*searchable-scrollback:            Shift-Control-S
+URxvt.keysym.Shift-Control-C:           perl:clipboard:copy
+URxvt.keysym.Shift-Control-V:           perl:clipboard:paste
+URxvt.url-select.underline:             true
+
+! Solarized Colors 
+
+URxvt*color0:                           #073642  
+URxvt*color1:                           #dc322f  
+URxvt*color2:                           #859900  
+URxvt*color3:                           #b58900  
+URxvt*color4:                           #268bd2  
+URxvt*color5:                           #d33682  
+URxvt*color6:                           #2aa198  
+URxvt*color7:                           #eee8d5  
+URxvt*color8:                           #002b36  
+URxvt*color9:                           #cb4b16  
+URxvt*color10:                          #586e75 
+URxvt*color11:                          #657b83 
+URxvt*color12:                          #839496 
+URxvt*color13:                          #6c71c4 
+URxvt*color14:                          #93a1a1 
+URxvt*color15:                          #fdf6e3 
+
+URxvt*background:                       #002b36
+URxvt*foreground:                       #839496
+URxvt*highlightColor:                   #d33682
+URxvt*highlightTextColor:               #002b36
+URxvt*cursorColor:                      #268bd2
+
