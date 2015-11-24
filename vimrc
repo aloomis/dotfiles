@@ -36,6 +36,10 @@ set background=dark
 colorscheme solarized
 let g:solarized_termtrans=1
 
+" Small fixes to solarized color scheme.
+hi SignColumn ctermbg=8
+hi CursorLineNR ctermbg=0
+
 " Automatically reload buffers that changed outside of vim
 set autoread
 
