@@ -1,9 +1,9 @@
-# i3 config file (v4) 
+# i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 # Set the meta key as the modifier.
-set $mod Mod4 
+set $mod Mod4
 
 # Font for window titles and bar. Ideally we want size 10 here, but for some
 # reason this does seem affected by the DPI change that occurs when the
@@ -39,7 +39,7 @@ exec xautolock -time 1 -locker "cinnamon-screensaver-command -l"
 bindsym $mod+Return exec i3-sensible-terminal
 
 # Start dmenu--make the font size just a bit bigger that 10 to cover the i3bar.
-bindsym $mod+space exec dmenu_run -p "Goobuntu" -fn "Hack:size=11" -nb "#073642" -nf "#839496" -sb "#d33683" -sf "#ffffff"
+bindsym $mod+space exec dmenu_run -p "Goobuntu >>>" -fn "Hack:size=11" -nb "#333333" -nf "#839496" -sb "#d33683" -sf "#ffffff"
 
 # use the cursor keys to change focus.
 bindsym $mod+Left focus left
@@ -129,10 +129,14 @@ bar {
     tray_padding 2
 
     colors {
-        background #073642
+        background #333333
         statusline #839496
         separator #586e75
-        
+
+        #background #073642
+        #statusline #839496
+        #separator #586e75
+
         focused_workspace  #268bd2 #268bd2 #ffffff
         active_workspace   #2aa198 #2aa198 #ffffff
         inactive_workspace #586e75 #586e75 #93a1a1
@@ -148,8 +152,8 @@ new_float pixel 3
 hide_edge_borders both
 
 # Bind the volume function keys.
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 1 +5% && killall -SIGUSR1 i3status 
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 1 -- -5% && killall -SIGUSR1 i3status 
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 1 +5% && killall -SIGUSR1 i3status
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 1 -- -5% && killall -SIGUSR1 i3status
 bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle && killall -SIGUSR1 i3status
 
 # Bind the brightness function keys.
