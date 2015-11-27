@@ -80,10 +80,14 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+set $workspace1 1:urxvt
+set $workspace2 2:corp
+set $workspace3 3:www
+
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
@@ -93,9 +97,9 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
@@ -143,16 +147,12 @@ bar {
     colors {
         background #333333
         statusline #839496
-        separator #586e75
+        separator #839496
 
-        #background #073642
-        #statusline #839496
-        #separator #586e75
-
-        focused_workspace  #268bd2 #268bd2 #ffffff
-        active_workspace   #2aa198 #2aa198 #ffffff
-        inactive_workspace #586e75 #586e75 #93a1a1
-        urgent_workspace   #d33682 #d33683 #ffffff
+        focused_workspace  #268bd2 #268bd2 #333333
+        active_workspace   #2aa198 #2aa198 #333333
+        inactive_workspace #586e75 #586e75 #333333
+        urgent_workspace   #d33682 #d33683 #333333
     }
 }
 
@@ -175,8 +175,8 @@ bindsym XF86MonBrightnessUp exec --no-startup-id /usr/bin/xbacklight -inc 10
 # Copy data from gconf to gsettings.
 exec gsettings-data-convert
 
-# Launch the cinnamon settings daemon to get setttings for GTK apps.
-# TODO: Unfortunately this incorrectly messed with the DPI.
+# Launch the cinnamon settings daemon to get setttings for GTK apps. This seems to
+# incorrectly mess with the DPI.
 exec /usr/bin/cinnamon-settings-daemon
 
 # Goobuntu notifications (go/gsysnews).
