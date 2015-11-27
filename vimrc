@@ -40,6 +40,12 @@ let g:solarized_termtrans=1
 hi SignColumn ctermbg=8
 hi CursorLineNR ctermbg=0
 
+"hi StatusLine cterm=NONE ctermbg=0
+
+hi TabLine cterm=NONE ctermfg=12 ctermbg=0
+hi TabLineFill cterm=NONE ctermfg=12 ctermbg=8
+hi TabLineSel cterm=NONE ctermfg=8 ctermbg=9
+
 " Automatically reload buffers that changed outside of vim
 set autoread
 
@@ -70,7 +76,7 @@ set laststatus=2
 " Disable redraws during macros
 set lazyredraw
 
-" Disable spaces when joining lines
+" Disable extra spaces when joining lines
 set nojoinspaces
 
 " Disable wrapping of text
@@ -126,6 +132,9 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+
+" Launch FZF
+nnoremap <c-f> :FZF<cr>
 
 " Strip white space on save
 autocmd BufWritePre * call StripWhiteSpaces()
