@@ -33,7 +33,7 @@ bindsym $mod+Shift+e exec i3-msg exit
 bindsym $mod+Shift+l exec cinnamon-screensaver-command -l
 
 # Setup automatic screen locking. The cinnamon-screensaver daemon doesn't work here without some other missing pieces.
-exec xautolock -time 1 -locker "cinnamon-screensaver-command -l"
+exec xautolock -time 1 -corners -000 -locker "cinnamon-screensaver-command -l"
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
