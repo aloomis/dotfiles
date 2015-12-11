@@ -40,12 +40,6 @@ let g:solarized_termtrans=1
 hi SignColumn ctermbg=8
 hi CursorLineNR ctermbg=0
 
-"hi StatusLine cterm=NONE ctermbg=0
-
-hi TabLine cterm=NONE ctermfg=12 ctermbg=0
-hi TabLineFill cterm=NONE ctermfg=12 ctermbg=8
-hi TabLineSel cterm=NONE ctermfg=8 ctermbg=9
-
 " Automatically reload buffers that changed outside of vim
 set autoread
 
