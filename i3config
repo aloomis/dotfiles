@@ -36,7 +36,7 @@ bindsym $mod+Shift+l exec cinnamon-screensaver-command -l
 exec xautolock -time 1 -corners -000 -locker "cinnamon-screensaver-command -l"
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt -e bash -c "tmux attach || tmux new"
 
 # Start dmenu--make the font size just a bit bigger that 10 to cover the i3bar.
 bindsym $mod+space exec dmenu_run -p "Goobuntu >>>" -fn "Hack:size=11" -nb "#333333" -nf "#839496" -sb "#d33683" -sf "#ffffff"
@@ -160,6 +160,7 @@ bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle && killall -SIGUSR1 i3st
 bindsym XF86MonBrightnessDown exec --no-startup-id /usr/bin/xbacklight -dec 10
 bindsym XF86MonBrightnessUp exec --no-startup-id /usr/bin/xbacklight -inc 10
 
+
 # Copy data from gconf to gsettings.
 exec gsettings-data-convert
 
@@ -168,7 +169,10 @@ exec gsettings-data-convert
 exec /usr/bin/cinnamon-settings-daemon
 
 # Launch network manager.
-exec sleep 1; nm-applet
+exec nm-applet
+
+# Start the URXVT daemon
+exec --no-startup-id urxvtd -q -o -f
 
 # Restart in order to update the bar icons--there must be a better way!
-exec sleep 2; i3-msg restart
+exec sleep 1; i3-msg restart
