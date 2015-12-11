@@ -9,7 +9,7 @@ Xft.hintstyle:  hintslight
 ! URXVT Settings ---------------------------------------------------------------
 
 URxvt.font:                             xft:Hack:size=10
-URxvt.lineSpace:                        4
+URxvt.lineSpace:                        2
 URxvt.letterSpace:                      -1
 URxvt.scrollBar:                        false
 URxvt.saveLines:                        number
