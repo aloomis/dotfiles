@@ -1,0 +1,36 @@
+#!/bin/bash
+
+SINK=$BLOCK_INSTANCE
+
+# Set the volume based on any button clicks/scrolls.
+case "$BLOCK_BUTTON" in
+  1) pactl set-sink-mute $SINK toggle;;
+  4) pactl set-sink-volume $SINK +5%;;
+  5) pactl set-sink-volume $SINK -- -5%;;
+esac
+
+# Get the current volume.
+VOLUME="$(pactl list sinks \
+	| grep -m $((SINK+1)) "^\s*Volume" \
+	| tail -n 1 |  sed -r 's/.*\s([0-9]+)%$/\1/')"
+
+# If the volume is above 100% then reset it.
+if [ "$VOLUME" -gt 100 ]; then
+  pactl set-sink-volume $SINK 100%
+  VOLUME=100
+fi
+
+# Get the mute status.
+MUTE="$(pactl list sinks \
+	| grep -m $((SINK+1)) "^\s*Mute" \
+	| tail -n 1 |  sed -r 's/.*Mute:\s(.*)$/\1/')"
+
+# Print out the full text.
+case "$MUTE" in
+  yes) echo "× $VOLUME%";;
+  no) echo " $VOLUME%";;
+esac
+
+#Print out the short text and color.
+echo "$VOLUME%"
+echo \#dc322f

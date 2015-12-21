@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Set the brightness based on any button clicks/scrolls.
+case "$BLOCK_BUTTON" in
+  4) light -A 10;;
+  5) light -U 10;;
+esac
+
+# Get the current brightness and round to the nearest 10.
+VALUE="$(light -G | xargs printf '%.0f')"
+VALUE="$(( 10 * ((VALUE + 2) / 10) ))"
+
+echo " $VALUE%"
+echo "$VALUE%"
+echo \#b58900
