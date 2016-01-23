@@ -39,7 +39,7 @@ exec xautolock -time 1 -corners -000 -locker "cinnamon-screensaver-command -l"
 bindsym $mod+Return exec urxvt
 
 # Start dmenu--make the font size just a bit bigger that 10 to cover the i3bar.
-bindsym $mod+space exec dmenu_run -p "Goobuntu >>>" -fn "Ubuntu:size=11" -nb "#333333" -nf "#839496" -sb "#d33683" -sf "#ffffff"
+bindsym $mod+space exec dmenu_run -p "Goobuntu >>>" -fn "Hack:size=11" -nb "#333333" -nf "#839496" -sb "#d33683" -sf "#ffffff"
 
 # use the cursor keys to change focus.
 bindsym $mod+Left focus left
@@ -111,6 +111,17 @@ bindsym $mod+Shift+0 move container to workspace 10
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
@@ -169,6 +180,7 @@ bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle && pkill -RTMIN+1 i3bloc
 # Bind the brightness function keys.
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10 && pkill -RTMIN+2 i3blocks
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10 && pkill -RTMIN+2 i3blocks
+
 
 # Copy data from gconf to gsettings.
 exec gsettings-data-convert
