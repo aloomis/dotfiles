@@ -52,7 +52,12 @@ interval=10
 [battery]
 interval=10
 
+[date]
+label=
+command=date '+ %a %b %d'
+interval=1
+
 [time]
 label=
-command=date '+ %a %b %d %-I:%M%P '
+command=date '+ %-I:%M%P'
 interval=1
