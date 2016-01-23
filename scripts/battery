@@ -59,7 +59,7 @@ $short_text = $full_text;
 # print text
 print "$full_text\n";
 print "$short_text\n";
-print "#268bd2";
+print "#839496";
 
 if ($status eq 'Discharging') {
 	if ($percent < 5) {

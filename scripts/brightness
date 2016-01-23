@@ -12,4 +12,4 @@ VALUE="$(( 10 * ((VALUE + 2) / 10) ))"
 
 echo " $VALUE%"
 echo "$VALUE%"
-echo \#b58900
+echo \#839496

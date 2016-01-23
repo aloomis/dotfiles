@@ -20,6 +20,11 @@ if [ "$VOLUME" -gt 100 ]; then
   VOLUME=100
 fi
 
+ICON=""
+if [ "$VOLUME" -gt 50 ]; then
+  ICON=""
+fi
+
 # Get the mute status.
 MUTE="$(pactl list sinks \
 	| grep -m $((SINK+1)) "^\s*Mute" \
@@ -28,9 +33,9 @@ MUTE="$(pactl list sinks \
 # Print out the full text.
 case "$MUTE" in
   yes) echo "× $VOLUME%";;
-  no) echo " $VOLUME%";;
+  no) echo "$ICON $VOLUME%";;
 esac
 
 #Print out the short text and color.
 echo "$VOLUME%"
-echo \#dc322f
+echo \#839496
