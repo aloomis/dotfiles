@@ -1,0 +1,181 @@
+# Solarized theme for ls.
+# Based on https://github.com/seebi/dircolors-solarized.git
+
+# TERMCOL   ANSII Solarized
+# --------- ----- ---------
+# black     30/40 base02
+# red       31/41 red
+# green     32/42 green
+# yellow    33/43 yellow
+# blue      34/44 blue
+# magenta   35/45 magenta
+# cyan      36/46 cyan
+# white     37/47 base2
+# brblack   01;30 base03
+# brred     01;31 orange
+# brgreen   01;32 base01
+# bryellow  01;33 base00
+# brblue    01;34 base0
+# brmagenta 01;35 violet
+# brcyan    01;36 base1
+# brwhite   01;37 base3
+
+NORMAL 00
+FILE   00
+
+DIR                   34
+STICKY                37;44
+STICKY_OTHER_WRITABLE 37;44
+OTHER_WRITABLE        37;44
+
+LINK    35
+ORPHAN  37;45
+MISSING 37;45
+
+FIFO 30;47
+SOCK 30;47
+DOOR 30;47
+BLK  30;47
+CHR  30;47
+
+EXEC 31
+SGID 37;41
+SUID 37;41
+
+# Multimedia formats
+
+.bmp  33
+.cgm  33
+.dl   33
+.dvi  33
+.emf  33
+.eps  33
+.gif  33
+.jpeg 33
+.jpg  33
+.JPG  33
+.mng  33
+.pbm  33
+.pcx  33
+.pdf  33
+.pgm  33
+.png  33
+.PNG  33
+.ppm  33
+.pps  33
+.ppsx 33
+.ps   33
+.svg  33
+.svgz 33
+.tga  33
+.tif  33
+.tiff 33
+.xbm  33
+.xcf  33
+.xpm  33
+.xwd  33
+.xwd  33
+.yuv  33
+
+.aac  33
+.au   33
+.flac 33
+.m4a  33
+.mid  33
+.midi 33
+.mka  33
+.mp3  33
+.mpa  33
+.mpeg 33
+.mpg  33
+.ogg  33
+.ra   33
+.wav  33
+
+.anx  33
+.asf  33
+.avi  33
+.axv  33
+.flc  33
+.fli  33
+.flv  33
+.gl   33
+.m2v  33
+.m4v  33
+.mkv  33
+.mov  33
+.MOV  33
+.mp4  33
+.mp4v 33
+.mpeg 33
+.mpg  33
+.nuv  33
+.ogm  33
+.ogv  33
+.ogx  33
+.qt   33
+.rm   33
+.rmvb 33
+.swf  33
+.vob  33
+.webm 33
+.wmv  33
+
+# Binary documents
+
+.doc  01;31
+.docx 01;31
+.rtf  01;31
+.odt  01;31
+.dot  01;31
+.dotx 01;31
+.ott  01;31
+.xls  01;31
+.xlsx 01;31
+.ods  01;31
+.ots  01;31
+.ppt  01;31
+.pptx 01;31
+.odp  01;31
+.otp  01;31
+.fla  01;31
+.psd  01;31
+
+# Archives
+
+.7z   01;31
+.Z    01;31
+.apk  01;31
+.bin  01;31
+.bz   01;31
+.bz2  01;31
+.deb  01;31
+.dmg  01;31
+.gz   01;31
+.iso  01;31
+.jar  01;31
+.rar  01;31
+.rpm  01;31
+.tar  01;31
+.tbz  01;31
+.tbz2 01;31
+.tgz  01;31
+.xz   01;31
+.z    01;31
+.zip  01;31
+
+# Unimportant files
+
+*#    01;32
+*~    01;32
+.BAK  01;32
+.DIST 01;32
+.OLD  01;32
+.ORIG 01;32
+.bak  01;32
+.dist 01;32
+.log  01;32
+.old  01;32
+.orig 01;32
+.swo  01;32
+.swp  01;32
