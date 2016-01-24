@@ -14,7 +14,6 @@ URxvt.letterSpace:                      -1
 URxvt.scrollBar:                        false
 URxvt.cursorBlink:                      true
 URxvt.urgentOnBell:                     true
-URxvt.intensityStyles:                  false
 
 URxvt.perl-lib:                         /usr/lib/urxvt/perl
 URxvt.perl-ext-common:                  default,clipboard,url-select
