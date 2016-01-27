@@ -35,11 +35,11 @@ bindsym $mod+Shift+l exec cinnamon-screensaver-command -l
 # Setup automatic screen locking. The cinnamon-screensaver daemon doesn't work here without some other missing pieces.
 exec xautolock -time 1 -corners -000 -locker "cinnamon-screensaver-command -l"
 
-# start a terminal
+# Start a terminal
 bindsym $mod+Return exec urxvt
 
-# Start dmenu--make the font size just a bit bigger that 10 to cover the i3bar.
-bindsym $mod+space exec dmenu_run -p "Goobuntu >>>" -fn "Hack:size=11" -nb "#333333" -nf "#839496" -sb "#d33683" -sf "#ffffff"
+# Start dmenu.
+bindsym $mod+space exec dmenu_run -p "Goobuntu >>>" -fn "Hack:size=10" -nb "#333333" -nf "#839496" -sb "#d33683" -sf "#ffffff" -lh 28
 
 # use the cursor keys to change focus.
 bindsym $mod+Left focus left
