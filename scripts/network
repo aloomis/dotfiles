@@ -1,8 +1,8 @@
 #!/bin/bash
 
-DEFAULT_DEVICE="$(ip route | head -1 | sed 's/.*dev\s\([A-Za-z0-9]*\).*/\1/')"
-if [ ! -z "$DEFAULT_DEVICE" ]; then
-  echo "$DEFAULT_DEVICE"
-  echo "$DEFAULT_DEVICE"
+IP="$(ip route get 1 | head -1 | sed 's/.*src\s\([0-9.]*\).*/\1/')"
+if [ ! -z "$IP" ]; then
+  echo "$IP"
+  echo "$IP"
   echo \#839496
 fi
