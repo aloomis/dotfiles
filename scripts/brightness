@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Set the brightness based on any button clicks/scrolls.
+# Update the brightness based on any button clicks/scrolls.
 case "$BLOCK_BUTTON" in
   4) light -A 10;;
   5) light -U 10;;
@@ -10,6 +10,17 @@ esac
 VALUE="$(light -G | xargs printf '%.0f')"
 VALUE="$(( 10 * ((VALUE + 2) / 10) ))"
 
+# Get the previous brightness value and save the current value.
+TMP_FILE="/tmp/i3blocks.brightness"
+read PREV_VALUE < $TMP_FILE
+echo "$VALUE" > "$TMP_FILE"
+
+# Set color if the brightness has changed.
+COLOR="#839496"
+if [ "$VALUE" -ne "$PREV_VALUE" ]; then
+  COLOR="#b58900"
+fi
+
 echo " $VALUE%"
 echo "$VALUE%"
-echo \#839496
+echo "$COLOR"

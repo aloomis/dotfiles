@@ -36,11 +36,13 @@ if ($acpi !~ /: (\w+), (\d+)%/) {
 
 $status = $1;
 $percent = $2;
+$color = "#839496";
 
 if ($status eq 'Full' or $status eq 'Charging') {
 	$full_text = '';
 } elsif ($status eq 'Discharging') {
 	if ($percent < 20) {
+                $color = "#268bd2";
 		$full_text = ''
 	} elsif ($percent < 40) {
 		$full_text = ''
@@ -59,7 +61,7 @@ $short_text = $full_text;
 # print text
 print "$full_text\n";
 print "$short_text\n";
-print "#839496";
+print "$color\n";
 
 if ($status eq 'Discharging') {
 	if ($percent < 5) {

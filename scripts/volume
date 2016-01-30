@@ -9,6 +9,11 @@ case "$BLOCK_BUTTON" in
   5) pactl set-sink-volume $SINK -- -5%;;
 esac
 
+# Get the mute status.
+MUTE="$(pactl list sinks \
+	| grep -m $((SINK+1)) "^\s*Mute" \
+	| tail -n 1 |  sed -r 's/.*Mute:\s(.*)$/\1/')"
+
 # Get the current volume.
 VOLUME="$(pactl list sinks \
 	| grep -m $((SINK+1)) "^\s*Volume" \
@@ -25,10 +30,15 @@ if [ "$VOLUME" -gt 50 ]; then
   ICON=""
 fi
 
-# Get the mute status.
-MUTE="$(pactl list sinks \
-	| grep -m $((SINK+1)) "^\s*Mute" \
-	| tail -n 1 |  sed -r 's/.*Mute:\s(.*)$/\1/')"
+# Get the previous volume and mute
+TMP_FILE="/tmp/i3blocks.volume"
+read PREV_MUTE PREV_VOLUME < $TMP_FILE
+echo "$MUTE $VOLUME" > "$TMP_FILE"
+
+COLOR="#839496"
+if [ \( "$MUTE" != "$PREV_MUTE" \) -o \( "$VOLUME" -ne "$PREV_VOLUME" \) ]; then
+  COLOR="#6c71c4"
+fi
 
 # Print out the full text.
 case "$MUTE" in
@@ -38,4 +48,4 @@ esac
 
 #Print out the short text and color.
 echo "$VOLUME%"
-echo \#839496
+echo "$COLOR"
