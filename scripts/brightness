@@ -13,11 +13,14 @@ VALUE="$(( 10 * ((VALUE + 2) / 10) ))"
 # Get the previous brightness value and save the current value.
 TMP_FILE="/tmp/i3blocks.brightness"
 read PREV_VALUE < $TMP_FILE
-echo "$VALUE" > "$TMP_FILE"
-
-# Set color if the brightness has changed.
-COLOR="#839496"
 if [ "$VALUE" -ne "$PREV_VALUE" ]; then
+  echo "$VALUE" > "$TMP_FILE"
+fi
+
+# Set color if the brightness has changed recently.
+COLOR="#839496"
+ELAPSED="$(expr $(date +%s) - $(date +%s -r $TMP_FILE))"
+if [ "$ELAPSED" -le 5 ]; then
   COLOR="#b58900"
 fi
 
