@@ -34,12 +34,8 @@ endif
 
 " Set the color scheme and any options
 set background=dark
-colorscheme solarized
-let g:solarized_termtrans=1
-
-" Small fixes to solarized color scheme.
-hi SignColumn ctermbg=8
-hi CursorLineNR ctermbg=0
+let g:gruvbox_italic=1
+colorscheme gruvbox
 
 " Automatically reload buffers that changed outside of vim
 set autoread
