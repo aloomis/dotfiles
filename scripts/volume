@@ -35,9 +35,9 @@ TMP_FILE="/tmp/i3blocks.volume"
 read PREV_MUTE PREV_VOLUME < $TMP_FILE
 echo "$MUTE $VOLUME" > "$TMP_FILE"
 
-COLOR="#839496"
+COLOR="#928374"
 if [ \( "$MUTE" != "$PREV_MUTE" \) -o \( "$VOLUME" -ne "$PREV_VOLUME" \) ]; then
-  COLOR="#6c71c4"
+  COLOR="#b16286"
 fi
 
 # Print out the full text.

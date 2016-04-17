@@ -4,5 +4,4 @@ IP="$(ip route get 1 | head -1 | sed 's/.*src\s\([0-9.]*\).*/\1/')"
 if [ ! -z "$IP" ]; then
   echo "$IP"
   echo "$IP"
-  echo \#839496
 fi

@@ -2,10 +2,10 @@
 load="$(cut -d ' ' -f1 /proc/loadavg)"
 cpus="$(nproc)"
 
-color="#839496"
+color="#928374"
 loaded=$(bc <<< "$load>$cpus")
 if [ "$loaded" == "1" ]; then
-    color="#d33682"
+    color="#b16286"
 fi
 
 echo "$load"
