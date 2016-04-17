@@ -26,17 +26,21 @@ if [ "$VOLUME" -gt 100 ]; then
 fi
 
 ICON=""
-if [ "$VOLUME" -gt 50 ]; then
-  ICON=""
-fi
+# Use an different volume icon for lower volumes.
+#if [ "$VOLUME" -gt 50 ]; then
+#  ICON=""
+#fi
 
 # Get the previous volume and mute
 TMP_FILE="/tmp/i3blocks.volume"
 read PREV_MUTE PREV_VOLUME < $TMP_FILE
-echo "$MUTE $VOLUME" > "$TMP_FILE"
+if [ "$MUTE" -ne "$PREV_MUTE" ] || [ "$VOLUME" -ne "$PREV_VOLUME" ]; then
+  echo "$MUTE $VOLUME" > "$TMP_FILE"
+fi
 
 COLOR="#839496"
-if [ \( "$MUTE" != "$PREV_MUTE" \) -o \( "$VOLUME" -ne "$PREV_VOLUME" \) ]; then
+ELAPSED="$(expr $(date +%s) - $(date +%s -r $TMP_FILE))"
+if [ "$ELAPSED" -le 5 ]; then
   COLOR="#6c71c4"
 fi
 
