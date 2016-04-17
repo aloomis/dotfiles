@@ -25,25 +25,23 @@ if [ "$VOLUME" -gt 100 ]; then
   VOLUME=100
 fi
 
-ICON=""
-if [ "$VOLUME" -gt 50 ]; then
-  ICON=""
-fi
-
 # Get the previous volume and mute
 TMP_FILE="/tmp/i3blocks.volume"
 read PREV_MUTE PREV_VOLUME < $TMP_FILE
-echo "$MUTE $VOLUME" > "$TMP_FILE"
+if [ "$MUTE" != "$PREV_MUTE" ] || [ "$VOLUME" -ne "$PREV_VOLUME" ]; then
+  echo "$MUTE $VOLUME" > "$TMP_FILE"
+fi
 
 COLOR="#928374"
-if [ \( "$MUTE" != "$PREV_MUTE" \) -o \( "$VOLUME" -ne "$PREV_VOLUME" \) ]; then
+ELAPSED="$(expr $(date +%s) - $(date +%s -r $TMP_FILE))"
+if [ "$ELAPSED" -le 5 ]; then
   COLOR="#b16286"
 fi
 
 # Print out the full text.
 case "$MUTE" in
   yes) echo "× $VOLUME%";;
-  no) echo "$ICON $VOLUME%";;
+  no) echo " $VOLUME%";;
 esac
 
 #Print out the short text and color.
