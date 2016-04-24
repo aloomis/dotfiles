@@ -1,6 +1,9 @@
 #!/bin/bash
 
 SIGNAL="$(nmcli --fields SIGNAL,ACTIVE device wifi list | grep yes | awk '{print $1}')"
+if [ -z "$SIGNAL" ]; then
+  exit 0
+fi
 
 echo $SIGNAL%
 echo $SIGNAL%
