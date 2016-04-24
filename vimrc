@@ -32,6 +32,9 @@ if $COLORTERM == 'gnome-terminal'
   set t_Co=256
 endif
 
+" Enable true color for neovim
+let NVIM_TUI_ENABLE_TRUE_COLOR=1
+
 " Set the color scheme and any options
 set background=dark
 let g:gruvbox_italic=1
