@@ -1,62 +1,64 @@
 ! Xft Settings -----------------------------------------------------------------
 
-Xft.dpi:        144
-Xft.antialias:  true
-Xft.rgba:       rgb
-Xft.hinting:    true
-Xft.hintstyle:  hintslight
+Xft.dpi:       144
+Xft.antialias: true
+Xft.rgba:      rgb
+Xft.hinting:   true
+Xft.hintstyle: hintslight
 
 ! URXVT Settings ---------------------------------------------------------------
 
-URxvt.font:                             xft:Hack:size=10
-URxvt.lineSpace:                        2
-URxvt.letterSpace:                      -1
-URxvt.scrollBar:                        false
-URxvt.cursorBlink:                      true
-URxvt.urgentOnBell:                     true
+URxvt.font:         xft:Hack:size=10
+URxvt.lineSpace:    2
+URxvt.letterSpace:  -1
+URxvt.scrollBar:    false
+URxvt.cursorBlink:  true
+URxvt.urgentOnBell: true
 
-URxvt.perl-lib:                         /usr/lib/urxvt/perl
-URxvt.perl-ext-common:                  default,clipboard,url-select
-URxvt.iso14755:                         false
-URxvt.iso14755_52:                      false
+URxvt.perl-lib:        /usr/lib/urxvt/perl
+URxvt.perl-ext-common: default,clipboard,url-select
+URxvt.iso14755:        false
+URxvt.iso14755_52:     false
 
-URxvt.searchable-scrollback:            Shift-Control-S
-URxvt.keysym.Shift-Control-C:           perl:clipboard:copy
-URxvt.keysym.Shift-Control-V:           perl:clipboard:paste
-URxvt.url-select.underline:             true
+URxvt.searchable-scrollback:  Shift-Control-S
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.url-select.underline:   true
 
 ! Gruvbox Colors ---------------------------------------------------------------
 
-!URxvt.color24:                          #076678
-!URxvt.color88:                          #9d0006
-!URxvt.color96:                          #8f3f71
-!URxvt.color100:                         #79740e
-!URxvt.color108:                         #8ec07c
-!URxvt.color109:                         #83a598
-!URxvt.color130:                         #af3a03
-!URxvt.color136:                         #b57614
-!URxvt.color142:                         #b8bb26
-!URxvt.color167:                         #fb4934
-!URxvt.color175:                         #d3869b
-!URxvt.color208:                         #fe8019
-!URxvt.color214:                         #fabd2f
-!URxvt.color223:                         #ebdbb2
-!URxvt.color228:                         #f2e5bc
-!URxvt.color229:                         #fbf1c7
-!URxvt.color230:                         #f9f5d7
-!URxvt.color234:                         #1d2021
-!URxvt.color235:                         #282828
-!URxvt.color236:                         #32302f
-!URxvt.color237:                         #3c3836
-!URxvt.color239:                         #504945
-!URxvt.color241:                         #665c54
-!URxvt.color243:                         #7c6f64
-!URxvt.color244:                         #928374
-!URxvt.color245:                         #928374
-!URxvt.color246:                         #a89984
-!URxvt.color248:                         #bdae93
-!URxvt.color250:                         #d5c4a1
+URxvt.color0:  #282828
+URxvt.color1:  #cc241d
+URxvt.color2:  #98971a
+URxvt.color3:  #d79921
+URxvt.color4:  #458588
+URxvt.color5:  #b16286
+URxvt.color6:  #689d6a
+URxvt.color7:  #a89984
+URxvt.color8:  #928374
+URxvt.color9:  #fb4934
+URxvt.color10: #b8bb26
+URxvt.color11: #fabd2f
+URxvt.color12: #83a598
+URxvt.color13: #d3869b
+URxvt.color14: #8ec07c
+URxvt.color15: #ebdbb2
 
-URxvt.background:                       #282828
-URxvt.foreground:                       #eddbb2
-URxvt.cursorColor:                      #eddbb2
+URxvt.background:  #282828
+URxvt.foreground:  #eddbb2
+URxvt.cursorColor: #eddbb2
+
+! ROFI -------------------------------------------------------------------------
+
+rofi.font:  Hack 15
+rofi.lines: 10
+rofi.width: 40
+
+rofi.hide-scrollbar:  true
+rofi.separator-style: dash
+rofi.color-enabled:   true
+
+rofi.color-normal:  #282828, #458588, #3c3836, #458588, #282828
+rofi.color-urgent:  #bd3869, #282828, #b16286, #458588, #282828
+rofi.color-active:  #d65d0e, #282828, #fe8019, #458588, #282828
+rofi.color-window:  #282828, #458588
