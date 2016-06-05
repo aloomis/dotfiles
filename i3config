@@ -38,8 +38,8 @@ exec xautolock -time 2 -corners -000 -locker "cinnamon-screensaver-command -l"
 # Start a terminal
 bindsym $mod+Return exec urxvt
 
-# Start dmenu.
-bindsym $mod+space exec dmenu_run -p "Goobuntu >>>" -fn "Hack:size=10" -nb "#333333" -nf "#839496" -sb "#d33683" -sf "#ffffff" -lh 28
+# Start ROFI.
+bindsym $mod+d exec "rofi -show run"
 
 # use the cursor keys to change focus.
 bindsym $mod+Left focus left
@@ -69,7 +69,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+#bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 #bindsym $mod+space focus mode_toggle
@@ -165,19 +165,13 @@ bar {
 }
 
 # Disable borders
-new_window pixel 2
-new_float pixel 2
-
-# Hide both horizontal and vertical borders on screen edges.
-hide_edge_borders both
-
-gaps inner 16
-gaps outer 16
+new_window pixel 1
+new_float pixel 1
 
 # Bind the volume function keys.
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 2 +5% && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 2 -- -5% && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioMute exec pactl set-sink-mute 2 toggle && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 1 +5% && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 1 -- -5% && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle && pkill -RTMIN+1 i3blocks
 
 # Bind the brightness function keys.
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10 && pkill -RTMIN+2 i3blocks
@@ -191,7 +185,7 @@ exec gsettings-data-convert
 exec /usr/bin/cinnamon-settings-daemon
 
 # Start a compositor.
-exec --no-startup-id compton -b -c
+exec --no-startup-id compton -b
 
 # Start the URXVT daemon
 exec --no-startup-id urxvtd -q -o -f
