@@ -1,66 +1,75 @@
-#!/usr/bin/perl
-#
-# Copyright 2014 Pierre Mavro <deimos@deimos.fr>
-# Copyright 2014 Vivien Didelot <vivien@didelot.org>
-#
-# Licensed under the terms of the GNU GPL v3, or any later version.
-#
-# This script is meant to use with i3blocks. It parses the output of the "acpi"
-# command (often provided by a package of the same name) to read the status of
-# the battery, and eventually its remaining time (to full charge or discharge).
-#
-# The color will gradually change for a percentage below 85%, and the urgency
-# (exit code 33) is set if there is less that 5% remaining.
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
-use strict;
-use warnings;
-use utf8;
+import re
+import subprocess
+import sys
 
-my $acpi;
-my $status;
-my $percent;
-my $full_text;
-my $short_text;
-my $color;
-my $bat_number = $ENV{BLOCK_INSTANCE} || 0;
 
-# read the first line of the "acpi" command output
-open (ACPI, "acpi -b | grep 'Battery $bat_number' |") or die;
-$acpi = <ACPI>;
-close(ACPI);
+# Battery status strings reported by acpi
+_STATUS_UNKNOWN     = 'Unknown'
+_STATUS_CHARGING    = 'Charging'
+_STATUS_DISCHARGING = 'Discharging'
 
-# fail on unexpected output
-if ($acpi !~ /: (\w+), (\d+)%/) {
-	die "$acpi\n";
-}
+# Font Awesome icons used to display battery status
+_ICON_PLUG     = ''
+_ICON_BATTERY0 = ''
+_ICON_BATTERY1 = ''
+_ICON_BATTERY2 = ''
+_ICON_BATTERY3 = ''
+_ICON_BATTERY4 = ''
 
-$status = $1;
-$percent = $2;
-$color = "#928374";
+# Gruvbox colors used to display battery status
+_COLOR_NORMAL   = '#928374'
+_COLOR_CHARGING = '#458588'
+_COLOR_WARNING  = '#d65d0e'
 
-if ($status eq 'Full' or $status eq 'Charging') {
-	$full_text = '';
-        $color = "#458588";
-} elsif ($status eq 'Discharging') {
-	if ($percent < 20) {
-		$full_text = ''
-	} elsif ($percent < 40) {
-		$full_text = ''
-	} elsif ($percent < 60) {
-		$full_text = ''
-	} elsif ($percent < 85) {
-		$full_text = ''
-	} else {
-		$full_text = ''
-	}
-}
 
-$full_text .= " $percent%";
-$short_text = $full_text;
+def _get_icon_and_color(status, percent):
+  """ Returns an icon and color for the current battery status.
+  Args:
+    status: An acpi string representing the battery status.
+    percent: An integer representing the battery level [0,100].
+  Returns:
+    A tuple whose first element is a UTF-8 font icon and whose second element
+    is a hex color string of the form '#RRGGBB.'
+  """
 
-# print text
-print "$full_text\n";
-print "$short_text\n";
-print "$color\n";
+  # ACPI incorrectly reports Unknown status when battery is full.
+  if status == _STATUS_CHARGING or status == _STATUS_UNKNOWN:
+      return (_ICON_PLUG, _COLOR_CHARGING)
+  elif percent < 13:
+      return (_ICON_BATTERY0, _COLOR_WARNING)
+  elif percent < 38:
+      return (_ICON_BATTERY1, _COLOR_NORMAL)
+  elif percent < 63:
+      return (_ICON_BATTERY2, _COLOR_NORMAL)
+  elif percent < 88:
+      return (_ICON_BATTERY3, _COLOR_NORMAL)
+  else:
+      return (_ICON_BATTERY4, _COLOR_NORMAL)
 
-exit(0);
+
+def main(argv):
+  battery_info = subprocess.check_output(['acpi', '-b'])
+  if not battery_info:
+    return
+
+  # TODO: Handle more than one battery.
+  battery_info = battery_info.split('\n')
+  battery_info = battery_info[0]
+
+  match = re.search('Battery [0-9]: ([A-Za-z]*), ([0-9]+)%', battery_info)
+  status = match.group(1)
+  percent = max(0, min(100, int(match.group(2))))
+
+  icon, color = _get_icon_and_color(status, percent)
+  display_text = "{} {}%".format(icon, percent)
+
+  print(display_text)
+  print(display_text)
+  print(color)
+
+
+if __name__ == "__main__":
+    main(sys.argv)
