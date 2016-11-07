@@ -27,6 +27,7 @@ fi
 
 # Get the previous volume and mute
 TMP_FILE="/tmp/i3blocks.volume"
+declare -i PREV_VOLUME
 read PREV_MUTE PREV_VOLUME < $TMP_FILE
 if [ "$MUTE" != "$PREV_MUTE" ] || [ "$VOLUME" -ne "$PREV_VOLUME" ]; then
   echo "$MUTE $VOLUME" > "$TMP_FILE"

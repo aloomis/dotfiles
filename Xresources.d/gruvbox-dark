@@ -1,0 +1,65 @@
+! Gruvbox ----------------------------------------------------------------------
+
+#define _black     #282828
+#define _red       #cc241d
+#define _green     #98971a
+#define _yellow    #d79921
+#define _blue      #458588
+#define _magenta   #b16286
+#define _cyan      #689d6a
+#define _white     #a89984
+#define _brblack   #928374
+#define _brred     #fb4934
+#define _brgreen   #b8bb26
+#define _bryellow  #fabd2f
+#define _brblue    #83a598
+#define _brmagenta #d3869b
+#define _brcyan    #8ec07c
+#define _brwhite   #ebdbb2
+
+#define _orange   #d65d0e
+#define _brorange #fe8019
+
+#define _bg0   #282828
+#define _bg0_h #1d2021
+#define _bg0_s #32302f
+
+#define _bg1  #3c3836
+#define _bg2  #504945
+#define _bg3  #665c54
+#define _bg4  #7c6f64
+#define _fg4  #a89984
+#define _fg3  #bdae93
+#define _fg2  #d5c4a1
+#define _fg1  #eddbb2
+#define _fg0  #fbf1c7
+
+! URXVT ------------------------------------------------------------------------
+
+URxvt.color0:  _black
+URxvt.color1:  _red
+URxvt.color2:  _green
+URxvt.color3:  _yellow
+URxvt.color4:  _blue
+URxvt.color5:  _magenta
+URxvt.color6:  _cyan
+URxvt.color7:  _white
+URxvt.color8:  _brblack
+URxvt.color9:  _brred
+URxvt.color10: _brgreen
+URxvt.color11: _bryellow
+URxvt.color12: _brblue
+URxvt.color13: _brmagenta
+URxvt.color14: _brcyan
+URxvt.color15: _brwhite
+
+URxvt.background:  [95]_bg0
+URxvt.foreground:  _fg1
+URxvt.cursorColor: _fg1
+
+! ROFI -------------------------------------------------------------------------
+
+rofi.color-normal: _bg0, _bg4,      _bg0, _bg1, _brwhite
+rofi.color-urgent: _bg0, _magenta,  _bg0, _bg1, _magenta
+rofi.color-active: _bg0, _brorange, _bg0, _bg1, _brorange
+rofi.color-window: _bg0, _brwhite

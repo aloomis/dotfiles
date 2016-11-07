@@ -12,6 +12,7 @@ VALUE="$(( 10 * ((VALUE + 2) / 10) ))"
 
 # Get the previous brightness value and save the current value.
 TMP_FILE="/tmp/i3blocks.brightness"
+declare -i PREV_VALUE
 read PREV_VALUE < $TMP_FILE
 if [ "$VALUE" -ne "$PREV_VALUE" ]; then
   echo "$VALUE" > "$TMP_FILE"

@@ -136,8 +136,8 @@ bindsym $mod+r mode "resize"
 
 # Window decoration colors
 # <color_class> <border> <background> <text> <indicator> <child_border>
-client.focused   #d65d0e  #d65d0e #ebdbb2 #d65d0e
-client.unfocused #3c3836  #3c3836 #ebdbb2 #ffffff
+client.focused   #eddbb2  #eddbb2 #ebdbb2 #282828
+client.unfocused #7c6f64  #7c6f64  #7c6f64 #282828
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -145,28 +145,28 @@ bar {
     font pango:Ubuntu, Font Awesome 15
 
     position top
-    status_command i3blocks
-    separator_symbol "|"
     strip_workspace_numbers yes
 
+    status_command i3blocks
+    separator_symbol "/"
     tray_output primary
-    tray_padding 2
+    tray_padding 0
 
     colors {
         background #282828
-        statusline #928374
-        separator #928374
+        statusline #7c6f64
+        separator #504945
 
-        focused_workspace  #282828 #282828 #d79921
-        active_workspace   #282828 #282828 #928374
-        inactive_workspace #282828 #282828 #928374
-        urgent_workspace   #282828 #282828 #928374
+        focused_workspace  #282828 #282828 #eddbb2
+        active_workspace   #282828 #282828 #7c6f64
+        inactive_workspace #282828 #282828 #7c6f64
+        urgent_workspace   #282828 #282828 #7c6f64
     }
 }
 
 # Disable borders
-new_window pixel 1
-new_float pixel 1
+new_window pixel 2
+new_float pixel 2
 
 # Bind the volume function keys.
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 1 +5% && pkill -RTMIN+1 i3blocks
@@ -176,7 +176,6 @@ bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle && pkill -RTMIN+1 i3bloc
 # Bind the brightness function keys.
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10 && pkill -RTMIN+2 i3blocks
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10 && pkill -RTMIN+2 i3blocks
-
 
 # Copy data from gconf to gsettings.
 exec gsettings-data-convert
@@ -189,3 +188,6 @@ exec --no-startup-id compton -b
 
 # Start the URXVT daemon
 exec --no-startup-id urxvtd -q -o -f
+
+# Restore the previous nitrogen wallpaper
+exec --no-startup-id nitrogen --restore
