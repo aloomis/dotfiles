@@ -33,7 +33,7 @@ interval=1
 
 [volume]
 signal=1
-instance=1
+instance=0
 interval=5
 
 [brightness]

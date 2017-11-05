@@ -6,22 +6,22 @@ SINK=$BLOCK_INSTANCE
 case "$BLOCK_BUTTON" in
   1) pactl set-sink-mute $SINK toggle;;
   4) pactl set-sink-volume $SINK +5%;;
-  5) pactl set-sink-volume $SINK -- -5%;;
+  5) pactl set-sink-volume $SINK -5%;;
 esac
 
 # Get the mute status.
 MUTE="$(pactl list sinks \
-	| grep -m $((SINK+1)) "^\s*Mute" \
+	| grep -m $((SINK + 1)) "^\s*Mute" \
 	| tail -n 1 |  sed -r 's/.*Mute:\s(.*)$/\1/')"
 
 # Get the current volume.
 VOLUME="$(pactl list sinks \
-	| grep -m $((SINK+1)) "^\s*Volume" \
-	| tail -n 1 |  sed -r 's/.*\s([0-9]+)%$/\1/')"
+	| grep -m $((SINK + 1)) "^\s*Volume" \
+	| tail -n 1 |  sed -r 's/.*\s([0-9]+)%\s.*$/\1/')"
 
 # If the volume is above 100% then reset it.
 if [ "$VOLUME" -gt 100 ]; then
-  pactl set-sink-volume $SINK 100%
+  pactl set-sink-volume "$SINK" 100%
   VOLUME=100
 fi
 
@@ -29,7 +29,7 @@ fi
 TMP_FILE="/tmp/i3blocks.volume"
 declare -i PREV_VOLUME
 read PREV_MUTE PREV_VOLUME < $TMP_FILE
-if [ "$MUTE" != "$PREV_MUTE" ] || [ "$VOLUME" -ne "$PREV_VOLUME" ]; then
+if [ -z "$PREV_MUTE" ] || [ -z "$PREV_VOLUME" ] || [ "$MUTE" != "$PREV_MUTE" ] || [ "$VOLUME" -ne "$PREV_VOLUME" ]; then
   echo "$MUTE $VOLUME" > "$TMP_FILE"
 fi
 

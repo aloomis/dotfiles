@@ -1,20 +1,22 @@
 #!/bin/bash
 
+PROGRAM=quad-light
+
 # Update the brightness based on any button clicks/scrolls.
 case "$BLOCK_BUTTON" in
-  4) light -A 10;;
-  5) light -U 10;;
+  4) $PROGRAM -A 10;;
+  5) $PROGRAM -U 10;;
 esac
 
 # Get the current brightness and round to the nearest 10.
-VALUE="$(light -G | xargs printf '%.0f')"
+VALUE="$($PROGRAM -G | xargs printf '%.0f')"
 VALUE="$(( 10 * ((VALUE + 2) / 10) ))"
 
 # Get the previous brightness value and save the current value.
 TMP_FILE="/tmp/i3blocks.brightness"
 declare -i PREV_VALUE
 read PREV_VALUE < $TMP_FILE
-if [ "$VALUE" -ne "$PREV_VALUE" ]; then
+if [ -z "$PREV_VALUE" ] || [ "$VALUE" -ne "$PREV_VALUE" ]; then
   echo "$VALUE" > "$TMP_FILE"
 fi
 
