@@ -38,7 +38,11 @@ let NVIM_TUI_ENABLE_TRUE_COLOR=1
 " Set the color scheme and any options
 set background=dark
 let g:gruvbox_italic=1
+let g:solarized_italic=1
 colorscheme gruvbox
+
+" Remove the background of the tabline
+hi BufTabLineFill ctermbg=none
 
 " Automatically reload buffers that changed outside of vim
 set autoread
