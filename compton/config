@@ -1,0 +1,21 @@
+# Use the OpenGL backend.
+backend = "glx";
+
+# Enable shadows on most windows.
+shadow = true;
+no-dnd-shadow = true;
+no-dock-shadow = false;
+clear-shadow = true;
+
+# To center the shadows the offsets seem to be -1.5 * shadow-radius.
+shadow-radius = 16;
+shadow-offset-x = -24;
+shadow-offset-y = -24;
+
+shadow-opacity = 0.4;
+# shadow-red = 0.0;
+# shadow-green = 0.0;
+# shadow-blue = 0.0;
+
+# Paint on X Composite overlay window--necessary to make screen saver work
+paint-on-overlay = true;
