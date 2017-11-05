@@ -36,6 +36,13 @@
 
 ! URXVT ------------------------------------------------------------------------
 
+URxvt.font:           xft:Hack:size=8
+URxvt.lineSpace:      2
+URxvt.letterSpace:    0
+URxvt.scrollBar:      false
+URxvt.cursorBlink:    true
+URxvt.internalBorder: 8
+
 URxvt.color0:  _black
 URxvt.color1:  _red
 URxvt.color2:  _green
@@ -59,7 +66,17 @@ URxvt.cursorColor: _fg1
 
 ! ROFI -------------------------------------------------------------------------
 
-rofi.color-normal: _bg0, _bg4,      _bg0, _bg1, _brwhite
-rofi.color-urgent: _bg0, _magenta,  _bg0, _bg1, _magenta
-rofi.color-active: _bg0, _brorange, _bg0, _bg1, _brorange
-rofi.color-window: _bg0, _brwhite
+rofi.font:            Hack 8
+rofi.separator-style: none
+rofi.hide-scrollbar:  true
+rofi.color-enabled:   true
+rofi.fullscreen:      true
+rofi.padding:         600
+
+!------------------ bg ---- border --- separator -------------------------------
+rofi.color-window: _bg0,   _bg0,      _bg0
+
+!------------------ bg ---- fg ------- bg-alt - hi-bg - hi-fg ------------------
+rofi.color-normal: _bg0,   _bg4,      _bg0,    _bg1,   _brwhite
+rofi.color-urgent: _bg0,   _magenta,  _bg0,    _bg1,   _magenta
+rofi.color-active: _bg0,   _brorange, _bg0,    _bg1,   _brorange
