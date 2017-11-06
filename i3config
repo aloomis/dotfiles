@@ -2,6 +2,40 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+set_from_resource $black     _black     #282828
+set_from_resource $red       _red       #cc241d
+set_from_resource $green     _green     #98971a
+set_from_resource $yellow    _yellow    #d79921
+set_from_resource $blue      _blue      #458588
+set_from_resource $magenta   _magenta   #b16286
+set_from_resource $cyan      _cyan      #689d6a
+set_from_resource $white     _white     #a89984
+set_from_resource $brblack   _brblack   #928374
+set_from_resource $brred     _brred     #fb4934
+set_from_resource $brgreen   _brgreen   #b8bb26
+set_from_resource $bryellow  _bryellow  #fabd2f
+set_from_resource $brblue    _brblue    #83a598
+set_from_resource $brmagenta _brmagenta #d3869b
+set_from_resource $brcyan    _brcyan    #8ec07c
+set_from_resource $brwhite   _brwhite   #ebdbb2
+
+set_from_resource $orange   _orange   #d65d0e
+set_from_resource $brorange _brorange #fe8019
+
+set_from_resource $bg0   _bg0   #282828
+set_from_resource $bg0_h _bg0_h #1d2021
+set_from_resource $bg0_s _bg0_s #32302f
+
+set_from_resource $bg1  _bg1  #3c3836
+set_from_resource $bg2  _bg2  #504945
+set_from_resource $bg3  _bg3  #665c54
+set_from_resource $bg4  _bg4  #7c6f64
+set_from_resource $fg4  _fg4  #a89984
+set_from_resource $fg3  _fg3  #bdae93
+set_from_resource $fg2  _fg2  #d5c4a1
+set_from_resource $fg1  _fg1  #eddbb2
+set_from_resource $fg0  _fg0  #fbf1c7
+
 # Set the meta key as the modifier.
 set $mod Mod4
 
@@ -129,9 +163,22 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Window decoration colors
-# <color_class> <border> <background> <text> <indicator> <child_border>
-client.focused   #eddbb2  #eddbb2 #ebdbb2 #282828
-client.unfocused #7c6f64  #7c6f64  #7c6f64 #282828
+#
+# border - Two lines around the titlebar.
+# background - Background of the titlebar.
+# text - Text on the titlebar.
+# indicator - The side of the border in a split container.
+# child_border - The border around the window.
+#
+# color_class           border  background text    indicator child_border
+client.focused          $bg0    $bg0       $fg1    $bg4      $bg4
+client.focused_inactive $bg0    $bg0       $bg4    $bg0      $bg0
+client.unfocused        $bg0    $bg0       $bg4    $bg0      $bg0
+client.urgent           $bg0    $bg0       $bg4    $red      $red
+client.placeholder      $bg0    $bg0       $bg4    $bg0      $bg0
+
+# color_class           background
+client.background       $bg0
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -147,14 +194,14 @@ bar {
     tray_padding 3
 
     colors {
-        background #282828
-        statusline #7c6f64
-        separator #504945
+        background $bg0
+        statusline $bg4
+        separator  $bg2
 
-        focused_workspace  #282828 #282828 #eddbb2
-        active_workspace   #282828 #282828 #7c6f64
-        inactive_workspace #282828 #282828 #7c6f64
-        urgent_workspace   #282828 #282828 #7c6f64
+        focused_workspace  $bg0 $bg0 $fg1
+        active_workspace   $bg0 $bg0 $bg4
+        inactive_workspace $bg0 $bg0 $bg4
+        urgent_workspace   $bg0 $bg0 $red
     }
 }
 
@@ -162,9 +209,12 @@ bar {
 gaps inner 8
 gaps outer 12
 
-# Window borders
+# Window borders of 1 pixel
 new_window pixel 1
 new_float pixel 1
+
+# Hide borders when there is only one window
+hide_edge_borders smart
 
 # Bind the volume function keys.
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+1 i3blocks

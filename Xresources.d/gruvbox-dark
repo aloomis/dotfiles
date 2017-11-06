@@ -79,5 +79,5 @@ rofi.color-window: _bg0,   _bg0,      _bg0
 
 !------------------ bg ---- fg ------- bg-alt - hi-bg - hi-fg ------------------
 rofi.color-normal: _bg0,   _bg4,      _bg0,    _bg1,   _brwhite
-rofi.color-urgent: _bg0,   _magenta,  _bg0,    _bg1,   _magenta
-rofi.color-active: _bg0,   _brorange, _bg0,    _bg1,   _brorange
+rofi.color-urgent: _bg0,   _red,      _bg0,    _bg1,   _red
+rofi.color-active: _bg0,   _blue,     _bg0,    _bg1,   _blue
