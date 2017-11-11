@@ -1,0 +1,107 @@
+#!/usr/bin/env bash
+
+# Returns the bluetooth controller info.
+#
+# The format is a multiline string with key-value pairs on each line. An example
+# string is given below:
+#
+#     Name: <name>
+#     Alias: <alias>
+#     Class: <class>
+#     Powered: yes
+#     Discoverable: no
+#     Pairable: yes
+#     UUID: Headset AG                (00000000-0000-0000-0000-000000000000)
+#     UUID: Generic Attribute Profile (00000000-0000-0000-0000-000000000000)
+#     UUID: A/V Remote Control        (00000000-0000-0000-0000-000000000000)
+#     UUID: Generic Access Profile    (00000000-0000-0000-0000-000000000000)
+#     UUID: PnP Information           (00000000-0000-0000-0000-000000000000)
+#     UUID: A/V Remote Control Target (00000000-0000-0000-0000-000000000000)
+#     UUID: Audio Source              (00000000-0000-0000-0000-000000000000)
+#     UUID: Audio Sink                (00000000-0000-0000-0000-000000000000)
+#     Modalias: <modalias>
+#     Discovering: no
+#
+get_controller_info()
+{
+controller_info=$(bluetoothctl <<EOF
+show
+EOF
+)
+echo "$controller_info" | grep '^[[:space:]]\+'
+}
+
+# Returns the bluetooth device info for the given address.
+#
+# The format is a multiline string with key-value pairs on each line. An example
+# string is given below:
+#
+#    Name: <name>
+#    Alias: <alias>
+#    Class: <class>
+#    Icon: audio-card
+#    Paired: yes
+#    Trusted: yes
+#    Blocked: no
+#    Connected: yes
+#    LegacyPairing: no
+#    UUID: Serial Port               (00000000-0000-0000-0000-000000000000)
+#    UUID: Headset                   (00000000-0000-0000-0000-000000000000)
+#    UUID: Audio Source              (00000000-0000-0000-0000-000000000000)
+#    UUID: Audio Sink                (00000000-0000-0000-0000-000000000000)
+#    UUID: A/V Remote Control Target (00000000-0000-0000-0000-000000000000)
+#    UUID: Advanced Audio Distribu.. (00000000-0000-0000-0000-000000000000)
+#    UUID: A/V Remote Control        (00000000-0000-0000-0000-000000000000)
+#    UUID: Handsfree                 (00000000-0000-0000-0000-000000000000)
+#    UUID: PnP Information           (00000000-0000-0000-0000-000000000000)
+#    Modalias: <modalias>
+#
+get_device_info()
+{
+device_info=$(bluetoothctl <<EOF
+info $1
+EOF
+)
+echo "$device_info" | grep '^[[:space:]]\+'
+}
+
+# Returns the addresses for all paired devices.
+get_paired_devices()
+{
+paired_devices=$(bluetoothctl <<EOF
+paired-devices
+EOF
+)
+echo "$paired_devices" | sed -nr 's/^Device\s([0-9A-Z:]*)\s.*/\1/p'
+}
+
+powered=$(get_controller_info | sed -nr 's/^\s*Powered:\s(yes|no).*/\1/p')
+if [[ "$powered" == "no" ]]; then
+  # If the bluetooth controller is not powered than do not show a tray entry.
+  exit 0
+fi
+
+# Find the name of the first connected device.
+connected_device=""
+for address in $(get_paired_devices); do
+  device_info=$(get_device_info $address)
+  connected=$(echo "$device_info" | sed -nr 's/.*Connected:\s(yes|no).*/\1/p')
+  if [[ "$connected" == "yes" ]]; then
+    connected_device=$(echo "$device_info" | sed -nr 's/.*Name:\s(.*)/\1/p')
+    break;
+  fi
+done
+
+ICON="" # fa-bluetooth-b (0xf294)
+CONNECTED_COLOR="#458588"
+DICONNECTED_COLOR="#928374"
+
+if [[ -n "$connected_device" ]]; then
+  echo "$ICON $connected_device"
+  echo "$ICON"
+  echo "$CONNECTED_COLOR"
+else
+  echo "$ICON"
+  echo "$ICON"
+  echo "$DISCONNECTED_COLOR"
+fi

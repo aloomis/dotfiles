@@ -27,6 +27,10 @@
 command=$HOME/.config/i3blocks/scripts/$BLOCK_NAME
 separator_block_width=30
 
+[bluetooth]
+label=
+interval=5
+
 [load_average]
 label=
 interval=1
