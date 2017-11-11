@@ -12,10 +12,13 @@ urxvtd -q -o -f
 # Restore the previous nitrogen wallpaper
 nitrogen --restore
 
+# Start up network manager
+nm-applet &
+
 # Start cinnamon screensaver and lock on suspend/hibernate
 xset s 120
 cinnamon-screensaver &
-xss-lock -- cinnamon-screensaver-command -l &
+xss-lock -v -- cinnamon-screensaver-command -l &
 
 # Setup environment variables
 export PATH=$HOME/bin:$PATH
