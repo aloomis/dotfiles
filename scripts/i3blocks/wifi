@@ -1,9 +1,18 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-SIGNAL="$(nmcli --fields SIGNAL,ACTIVE device wifi list | grep yes | awk '{print $1}')"
-if [ -z "$SIGNAL" ]; then
+wifi_state=$(nmcli radio wifi)
+if [[ "$wifi_state" == "disabled" ]]; then
   exit 0
 fi
 
-echo $SIGNAL%
-echo $SIGNAL%
+active_network=$(nmcli --fields SSID,SIGNAL,ACTIVE device wifi list | grep yes)
+if [[ -z "$active_network" ]]; then
+  echo "×"
+  exit 33
+fi
+
+ssid=$(echo $active_network | cut -d ' ' -f 1)
+signal=$(echo $active_network | cut -d ' ' -f 2)
+
+echo "$ssid ($signal%)"
+echo "$signal%"
