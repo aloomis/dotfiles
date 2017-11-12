@@ -12,17 +12,20 @@ _STATUS_CHARGING    = 'Charging'
 _STATUS_DISCHARGING = 'Discharging'
 
 # Font Awesome icons used to display battery status
-_ICON_PLUG     = ''
-_ICON_BATTERY0 = ''
-_ICON_BATTERY1 = ''
-_ICON_BATTERY2 = ''
-_ICON_BATTERY3 = ''
-_ICON_BATTERY4 = ''
+_ICON_CHARGE   = '' # fa-bolt (0xf0e7)
+_ICON_BATTERY0 = '' # fa-battery-empty (0xf244)
+_ICON_BATTERY1 = '' # fa-battery-quarter (0xf243)
+_ICON_BATTERY2 = '' # fa-battery-half (0xf242)
+_ICON_BATTERY3 = '' # fa-battery-three-quarter (0xf241)
+_ICON_BATTERY4 = '' # fa-battery-full (0xf240)
 
 # Gruvbox colors used to display battery status
 _COLOR_NORMAL   = '#928374'
 _COLOR_CHARGING = '#458588'
 _COLOR_WARNING  = '#cc241d'
+
+# Percentage below which this script will return an urgent flag
+_URGENT_THRESHOLD = 5
 
 
 def _get_icon_and_color(status, percent):
@@ -37,7 +40,7 @@ def _get_icon_and_color(status, percent):
 
   # ACPI incorrectly reports Unknown status when battery is full.
   if status == _STATUS_CHARGING or status == _STATUS_UNKNOWN:
-      return (_ICON_PLUG, _COLOR_CHARGING)
+      return (_ICON_CHARGE, _COLOR_CHARGING)
   elif percent < 13:
       return (_ICON_BATTERY0, _COLOR_WARNING)
   elif percent < 38:
@@ -69,6 +72,9 @@ def main(argv):
   print(display_text)
   print(display_text)
   print(color)
+
+  if status != _STATUS_CHARGING and percent < _URGENT_THRESHOLD:
+      sys.exit(33)
 
 
 if __name__ == "__main__":

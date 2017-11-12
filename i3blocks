@@ -44,6 +44,7 @@ interval=5
 signal=2
 instance=1
 interval=5
+#background="\#ff0000"
 
 [wifi]
 label=
