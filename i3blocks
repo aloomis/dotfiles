@@ -33,7 +33,7 @@ interval=5
 
 [load_average]
 label=
-interval=1
+interval=5
 
 [volume]
 signal=1
@@ -47,6 +47,7 @@ interval=5
 #background="\#ff0000"
 
 [wifi]
+instance=wlp4s0
 label=
 interval=10
 
