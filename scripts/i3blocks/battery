@@ -54,7 +54,7 @@ def _get_icon_and_color(status, percent):
 
 
 def main(argv):
-  battery_info = subprocess.check_output(['acpi', '-b'])
+  battery_info = subprocess.check_output(['acpi', '-b'], encoding='utf-8')
   if not battery_info:
     return
 
