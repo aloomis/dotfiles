@@ -1,7 +1,10 @@
 #!/bin/sh
 
 # Lenovo X1 Carbon v3 (2560 x 1440, 310mm x 174 mm)
-xrandr --dpi 192
+#xrandr --dpi 192
+
+# Dell XPS 13 9360 (1920 x 1080, 294mm x 165mm)
+xrandr --dpi 96
 
 # Start compton compositor.
 compton -b
