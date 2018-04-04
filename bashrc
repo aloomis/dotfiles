@@ -39,4 +39,3 @@ case $(uname) in
         alias grep="grep --color"
     ;;
 esac
-
