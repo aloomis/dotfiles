@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Merge local ~/.Xresources with the defaults.
+[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+
 # Lenovo X1 Carbon v3 (2560 x 1440, 310mm x 174 mm)
 #xrandr --dpi 192
 
@@ -16,11 +19,8 @@ urxvtd -q -o -f
 nitrogen --restore
 
 # Start cinnamon screensaver and lock on suspend/hibernate
-xset s 120
-cinnamon-screensaver &
-xss-lock -v -- cinnamon-screensaver-command -l &
-
-# Setup environment variables
-export PATH=$HOME/bin:$PATH
+#xset s 120
+#cinnamon-screensaver &
+#xss-lock -v -- cinnamon-screensaver-command -l &
 
 exec i3
