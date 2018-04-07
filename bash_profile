@@ -22,3 +22,5 @@ export HISTCONTROL=ignoreboth
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   exec startx 2> ~/.xsession-errors
 fi
+
+# vim: set ft=sh:

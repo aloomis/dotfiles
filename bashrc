@@ -38,3 +38,5 @@ alias ll="ls -Fhl --color=auto"
 
 # Enable color by default.
 alias grep="grep --color"
+
+# vim: set ft=sh:
