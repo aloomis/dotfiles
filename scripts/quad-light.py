@@ -41,7 +41,6 @@ def main():
     args = parser.parse_args()
 
     backlight = BrightnessCtl()
-
     if args.A: backlight.setBrightness(backlight.getBrightness() + args.A)
     elif args.U: backlight.setBrightness(backlight.getBrightness() - args.U)
     elif args.G: print(backlight.getBrightness())

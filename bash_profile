@@ -17,7 +17,6 @@ export HISTCONTROL=ignoreboth
 # Set LS_COLORS based on the configuration in ~/.dircolors.
 [[ -f ~/.dircolors ]] && eval `dircolors -b ~/.dircolors`
 
-
 # Automatically start X on tty1.
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   exec startx 2> ~/.xsession-errors
