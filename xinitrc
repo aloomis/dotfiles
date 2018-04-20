@@ -18,9 +18,13 @@ urxvtd -q -o -f
 # Restore the previous nitrogen wallpaper
 nitrogen --restore
 
-# Start cinnamon screensaver and lock on suspend/hibernate
-#xset s 120
-#cinnamon-screensaver &
-#xss-lock -v -- cinnamon-screensaver-command -l &
+# Activate the screen saver (dim the screen) after 60 seconds of inactivity and
+# the screen locker after the first burn in cycle (another 60 seconds).
+xset s 60 60
+xss-lock -n dim-screen.sh -- i3lock-color.sh &
+
+# Disabled standby and suspend. Turn the screen off after 150 seconds of
+# inactivity. On an LCD there is not much difference between the three.
+xset dpms 0 0 150
 
 exec i3
