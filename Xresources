@@ -26,6 +26,7 @@ URxvt.iso14755_52:     false
 URxvt.searchable-scrollback:  Shift-Control-S
 URxvt.keysym.Shift-Control-C: perl:clipboard:copy
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.keysym.Control-U:       perl:url-select:select_next
 URxvt.url-select.underline:   true
 URxvt.depth:                  32
 
