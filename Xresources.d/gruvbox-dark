@@ -36,6 +36,8 @@
 
 ! i3 Window Manager ------------------------------------------------------------
 
+#define _gray #aaaaaa
+
 i3wm.font: xft:Roboto 12
 
 ! border: Two lines around the titlebar.
@@ -51,16 +53,16 @@ i3wm.Client.placeholder:      _bg0 _bg0 _bg4 _bg0 _bg0
 i3wm.Client.background:       _bg0
 
 i3wm.Bar.font:       pango:Roboto, Font Awesome 12
-i3wm.Bar.foreground: #aaaaaa
+i3wm.Bar.foreground: _gray
 i3wm.Bar.background: _bg2
 
 ! border: Border of the workspace indicator.
 ! background: Background of the workspace indicator.
 ! text: Text of the workspace indicator.
-i3wm.Bar.focused:  _bg2 _bg2 #ffffff
-i3wm.Bar.active:   _bg2 _bg2 #aaaaaa
-i3wm.Bar.inactive: _bg2 _bg2 #aaaaaa
-i3wm.Bar.urgent:   _bg2 _bg2 _red
+i3wm.Bar.focused:  _gray _gray _bg2
+i3wm.Bar.active:   _bg2  _bg2  _gray
+i3wm.Bar.inactive: _bg2  _bg2  _gray
+i3wm.Bar.urgent:   _bg2  _red  _bg2
 
 ! URXVT ------------------------------------------------------------------------
 
