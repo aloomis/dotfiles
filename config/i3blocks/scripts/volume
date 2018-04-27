@@ -33,10 +33,10 @@ if [ -z "$PREV_MUTE" ] || [ -z "$PREV_VOLUME" ] || [ "$MUTE" != "$PREV_MUTE" ] |
   echo "$MUTE $VOLUME" > "$TMP_FILE"
 fi
 
-COLOR="#928374"
+COLOR=""
 ELAPSED="$(expr $(date +%s) - $(date +%s -r $TMP_FILE))"
 if [ "$ELAPSED" -le 5 ]; then
-  COLOR="#b16286"
+  COLOR="#ff8dc1"
 fi
 
 # Print out the full text.

@@ -21,10 +21,10 @@ if [ -z "$PREV_VALUE" ] || [ "$VALUE" -ne "$PREV_VALUE" ]; then
 fi
 
 # Set color if the brightness has changed recently.
-COLOR="#928374"
+COLOR=""
 ELAPSED="$(expr $(date +%s) - $(date +%s -r $TMP_FILE))"
 if [ "$ELAPSED" -le 5 ]; then
-  COLOR="#d79921"
+  COLOR="#ffb527"
 fi
 
 echo " $VALUE%"

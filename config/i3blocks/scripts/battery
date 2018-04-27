@@ -20,9 +20,8 @@ _ICON_BATTERY3 = '' # fa-battery-three-quarter (0xf241)
 _ICON_BATTERY4 = '' # fa-battery-full (0xf240)
 
 # Gruvbox colors used to display battery status
-_COLOR_NORMAL   = '#928374'
-_COLOR_CHARGING = '#458588'
-_COLOR_WARNING  = '#cc241d'
+_COLOR_CHARGING = '#81f9ff'
+_COLOR_WARNING  = '#ff2d24'
 
 # Percentage below which this script will return an urgent flag
 _URGENT_THRESHOLD = 5
@@ -44,13 +43,13 @@ def _get_icon_and_color(status, percent):
   elif percent < 13:
       return (_ICON_BATTERY0, _COLOR_WARNING)
   elif percent < 38:
-      return (_ICON_BATTERY1, _COLOR_NORMAL)
+      return (_ICON_BATTERY1, None)
   elif percent < 63:
-      return (_ICON_BATTERY2, _COLOR_NORMAL)
+      return (_ICON_BATTERY2, None)
   elif percent < 88:
-      return (_ICON_BATTERY3, _COLOR_NORMAL)
+      return (_ICON_BATTERY3, None)
   else:
-      return (_ICON_BATTERY4, _COLOR_NORMAL)
+      return (_ICON_BATTERY4, None)
 
 
 def main(argv):
@@ -71,7 +70,7 @@ def main(argv):
 
   print(display_text)
   print(display_text)
-  print(color)
+  if color: print(color)
 
   if status != _STATUS_CHARGING and percent < _URGENT_THRESHOLD:
       sys.exit(33)

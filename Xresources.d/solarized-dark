@@ -20,3 +20,5 @@ URxvt.color15:                          #fdf6e3
 URxvt.background:                       #002b36
 URxvt.foreground:                       #839496
 URxvt.cursorColor:                      #ffffff
+
+! vim: set ft=xdefaults:

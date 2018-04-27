@@ -93,8 +93,7 @@ for address in $(get_paired_devices); do
 done
 
 ICON="" # fa-bluetooth-b (0xf294)
-CONNECTED_COLOR="#458588"
-DICONNECTED_COLOR="#928374"
+CONNECTED_COLOR="#81f9ff"
 
 if [[ -n "$connected_device" ]]; then
   echo "$ICON $connected_device"
@@ -103,5 +102,4 @@ if [[ -n "$connected_device" ]]; then
 else
   echo "$ICON"
   echo "$ICON"
-  echo "$DISCONNECTED_COLOR"
 fi
