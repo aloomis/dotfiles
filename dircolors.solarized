@@ -179,3 +179,5 @@ SUID 37;41
 .orig 01;32
 .swo  01;32
 .swp  01;32
+
+# vim: set ft=dircolors:
