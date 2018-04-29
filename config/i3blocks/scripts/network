@@ -1,7 +1,12 @@
-#!/bin/bash
+#!/bin/env bash
+
+ICON= # fa-exchange
+
+# Font Awesome 5 does not include the space character and Pango seems to have
+# trouble falling back to a different font without this.
+PANGO_SPACE="<span fallback='true'> </span>"
 
 IP="$(ip route get 1 | head -1 | sed 's/.*src\s\([0-9.]*\).*/\1/')"
 if [ ! -z "$IP" ]; then
-  echo "$IP"
-  echo "$IP"
+  echo "$ICON$PANGO_SPACE$IP"
 fi

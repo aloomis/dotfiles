@@ -26,11 +26,16 @@ fi
 ssid=$(iwgetid -r $BLOCK_INSTANCE)
 if [[ -z "$ssid" ]]; then
   echo "×"
-  exit 33
+  exit 0
 fi
 
 # Scale the link quality from [0-100].
 signal=$(echo $config | sed -nr 's/.*Link\sQuality=([0-9\/]*).*/100*\1/p' | bc)
 
-echo "$ssid ($signal%)"
-echo "$signal%"
+ICON="" # fa-wifi
+
+# Font Awesome 5 does not include the space character and Pango seems to have
+# trouble falling back to a different font without this.
+PANGO_SPACE="<span fallback='true'> </span>"
+
+echo "$ICON$PANGO_SPACE$ssid ($signal%)"

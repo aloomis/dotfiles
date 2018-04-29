@@ -93,7 +93,7 @@ for address in $(get_paired_devices); do
 done
 
 ICON="" # fa-bluetooth-b (0xf294)
-CONNECTED_COLOR="#81f9ff"
+CONNECTED_COLOR=$(xgetres i3blocks.Bluetooth.connected)
 
 if [[ -n "$connected_device" ]]; then
   echo "$ICON $connected_device"

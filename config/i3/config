@@ -5,7 +5,7 @@
 set_from_resource $titleBarFont i3wm.font
 
 set_from_resource $clientFocused         i3wm.Client.focused
-set_from_resource $clientFocusedInactive i3wm.Client.focused_inactive
+set_from_resource $clientFocusedInactive i3wm.Client.focusedInactive
 set_from_resource $clientUnfocused       i3wm.Client.unfocused
 set_from_resource $clientUrgent          i3wm.Client.urgent
 set_from_resource $clientPlaceholder     i3wm.Client.placeholder

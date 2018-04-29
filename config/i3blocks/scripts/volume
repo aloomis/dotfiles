@@ -36,15 +36,20 @@ fi
 COLOR=""
 ELAPSED="$(expr $(date +%s) - $(date +%s -r $TMP_FILE))"
 if [ "$ELAPSED" -le 5 ]; then
-  COLOR="#ff8dc1"
+  COLOR=$(xgetres i3blocks.Volume.modified)
 fi
 
-# Print out the full text.
+ICON_NORMAL="" # fa-volume-up
+ICON_MUTE=""   # fa-volume-off
+
+# Font Awesome 5 does not include the space character and Pango seems to have
+# trouble falling back to a different font without this.
+PANGO_SPACE="<span fallback='true'> </span>"
+
 case "$MUTE" in
-  yes) echo "× $VOLUME%";;
-  no) echo " $VOLUME%";;
+  yes) echo "$ICON_MUTE$PANGO_SPACE$VOLUME%";;
+  no) echo "$ICON_NORMAL$PANGO_SPACE$VOLUME%";;
 esac
 
-#Print out the short text and color.
-echo "$VOLUME%"
+echo
 echo "$COLOR"

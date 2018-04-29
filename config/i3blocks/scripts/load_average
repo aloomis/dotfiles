@@ -1,13 +1,20 @@
-#!/bin/sh
+#!/bin/env bash
+
 load="$(cut -d ' ' -f1 /proc/loadavg)"
 cpus="$(nproc)"
 
 color=""
 loaded=$(bc <<< "$load>$cpus")
 if [ "$loaded" == "1" ]; then
-    color="#b8bb26"
+  color=$(xgetres i3blocks.Load.high)
 fi
 
-echo "$load"
-echo "$load"
+ICON="" # fa-chart-area
+
+# Font Awesome 5 does not include the space character and Pango seems to have
+# trouble falling back to a different font without this.
+PANGO_SPACE="<span fallback='true'> </span>"
+
+echo "$ICON$PANGO_SPACE$load"
+echo
 echo "$color"

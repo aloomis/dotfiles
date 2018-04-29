@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 
 PROGRAM=quad-light
 
@@ -24,9 +24,15 @@ fi
 COLOR=""
 ELAPSED="$(expr $(date +%s) - $(date +%s -r $TMP_FILE))"
 if [ "$ELAPSED" -le 5 ]; then
-  COLOR="#ffb527"
+  COLOR=$(xgetres i3blocks.Brightness.modified)
 fi
 
-echo " $VALUE%"
-echo "$VALUE%"
+ICON="" # fa-sun
+
+# Font Awesome 5 does not include the space character and Pango seems to have
+# trouble falling back to a different font without this.
+PANGO_SPACE="<span fallback='true'> </span>"
+
+echo "$ICON$PANGO_SPACE$VALUE%"
+echo
 echo "$COLOR"

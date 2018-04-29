@@ -36,7 +36,7 @@
 
 ! i3 Window Manager ------------------------------------------------------------
 
-#define _gray #aaaaaa
+#define _dark #202020
 
 i3wm.font: xft:Roboto 12
 
@@ -45,24 +45,31 @@ i3wm.font: xft:Roboto 12
 ! text: Text on the titlebar.
 ! indicator: The side of the border in a split container.
 ! child_border: The border around the window.
-i3wm.Client.focused:          _bg0 _bg0 _fg1 _bg4 _bg4
-i3wm.Client.focused_inactive: _bg0 _bg0 _bg4 _bg0 _bg0
-i3wm.Client.unfocused:        _bg0 _bg0 _bg4 _bg0 _bg0
-i3wm.Client.urgent:           _bg0 _bg0 _bg4 _red _red
-i3wm.Client.placeholder:      _bg0 _bg0 _bg4 _bg0 _bg0
-i3wm.Client.background:       _bg0
+i3wm.Client.focused:         _bg0 _bg0 _fg1 _bg4 _bg4
+i3wm.Client.focusedInactive: _bg0 _bg0 _bg4 _bg0 _bg0
+i3wm.Client.unfocused:       _bg0 _bg0 _bg4 _bg0 _bg0
+i3wm.Client.urgent:          _bg0 _bg0 _bg4 _red _red
+i3wm.Client.placeholder:     _bg0 _bg0 _bg4 _bg0 _bg0
+i3wm.Client.background:      _bg0
 
-i3wm.Bar.font:       pango:Roboto, Font Awesome 12
-i3wm.Bar.foreground: _gray
-i3wm.Bar.background: _bg2
+i3wm.Bar.font:       pango:Roboto, Font Awesome 5 Free 12
+i3wm.Bar.foreground: _fg4
+i3wm.Bar.background: _dark
 
 ! border: Border of the workspace indicator.
 ! background: Background of the workspace indicator.
 ! text: Text of the workspace indicator.
-i3wm.Bar.focused:  _gray _gray _bg2
-i3wm.Bar.active:   _bg2  _bg2  _gray
-i3wm.Bar.inactive: _bg2  _bg2  _gray
-i3wm.Bar.urgent:   _bg2  _red  _bg2
+i3wm.Bar.focused:  _fg4  _fg4  _dark
+i3wm.Bar.active:   _dark _dark _fg4
+i3wm.Bar.inactive: _dark _dark _fg4
+i3wm.Bar.urgent:   _dark _red  _dark
+
+i3blocks.Battery.charging:    _blue
+i3blocks.Battery.warning:     _red
+i3blocks.Bluetooth.connected: _blue
+i3blocks.Brightness.modified: _yellow
+i3blocks.Load.high:           _orange
+i3blocks.Volume.modified:     _magenta
 
 ! URXVT ------------------------------------------------------------------------
 
@@ -90,7 +97,7 @@ URxvt.color13: _brmagenta
 URxvt.color14: _brcyan
 URxvt.color15: _brwhite
 
-URxvt.background:  [90]_bg0
+URxvt.background:  _bg0
 URxvt.foreground:  _fg1
 URxvt.cursorColor: _fg1
 

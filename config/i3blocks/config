@@ -25,14 +25,15 @@
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
 command=$HOME/.config/i3blocks/scripts/$BLOCK_NAME
-separator_block_width=30
+align=center
+min_width=64
+separator_block_width=24
+markup=pango
 
-[bluetooth]
-label=
-interval=5
+#[bluetooth]
+#interval=5
 
 [load_average]
-label=
 interval=5
 
 [volume]
@@ -44,26 +45,21 @@ interval=5
 signal=2
 instance=1
 interval=5
-#background="\#ff0000"
 
 [wifi]
-instance=wlp4s0
-label=
+instance=wlp2s0
 interval=10
 
 [network]
-label=
 interval=10
 
 [battery]
 interval=10
 
 [date]
-label=
-command=date '+ %a %b %d'
+command=echo "<span fallback='true'> </span>$(date '+%a %b %d')"
 interval=1
 
 [time]
-label=
-command=date '+ %-I:%M%P'
+command=echo "<span fallback='true'> </span>$(date '+%-I:%M%P')"
 interval=1
