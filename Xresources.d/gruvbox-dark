@@ -65,10 +65,10 @@ i3wm.Bar.inactive: _dark _dark _fg4
 i3wm.Bar.urgent:   _dark _red  _dark
 
 i3blocks.Battery.charging:    _blue
-i3blocks.Battery.warning:     _red
+i3blocks.Battery.warning:     _orange
 i3blocks.Bluetooth.connected: _blue
 i3blocks.Brightness.modified: _yellow
-i3blocks.Load.high:           _orange
+i3blocks.Load.high:           _red
 i3blocks.Volume.modified:     _magenta
 
 ! URXVT ------------------------------------------------------------------------
