@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Exit if i3lock is already running.
+[[ $(pidof i3lock) ]] && exit
+
 RIGHT_COLOR="65b8e0ff"
 WRONG_COLOR="ff4210ff"
 
