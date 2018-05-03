@@ -3,6 +3,10 @@
 # Exit if i3lock is already running.
 [[ $(pidof i3lock) ]] && exit
 
+# Kill apps that prevent i3lock from grabbing the keyboard.
+# See https://github.com/DaveDavenport/rofi/issues/728
+pkill rofi
+
 RIGHT_COLOR="65b8e0ff"
 WRONG_COLOR="ff4210ff"
 
