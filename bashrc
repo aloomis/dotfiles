@@ -28,6 +28,12 @@ shopt -s nocaseglob >/dev/null 2>&1
 # Setup the command prompt.
 export PS1='[\u@\h:\W]\$ '
 
+# Set LS_COLORS based on the configuration in ~/.dircolors.
+[[ -f ~/.dircolors ]] && eval `dircolors -b ~/.dircolors`
+
+# Ignore commands starting with spaces and duplicates in history.
+export HISTCONTROL=ignoreboth
+
 #
 # Setup aliases.
 #
