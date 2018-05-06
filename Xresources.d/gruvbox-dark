@@ -64,7 +64,7 @@ i3wm.Bar.active:   _dark _dark _fg4
 i3wm.Bar.inactive: _dark _dark _fg4
 i3wm.Bar.urgent:   _dark _red  _dark
 
-i3blocks.Battery.charging:    _blue
+i3blocks.Battery.charging:    _fg0
 i3blocks.Battery.warning:     _orange
 i3blocks.Bluetooth.connected: _blue
 i3blocks.Brightness.modified: _yellow
@@ -108,8 +108,9 @@ rofi.window-format:   {c} {t}
 rofi.separator-style: none
 rofi.hide-scrollbar:  true
 rofi.color-enabled:   true
-rofi.fullscreen:      true
-rofi.padding:         400
+rofi.width:           36
+rofi.lines:           8
+rofi.padding:         32
 
 !------------------ bg ---- border --- separator -------------------------------
 rofi.color-window: _bg0,   _bg0,      _bg0
