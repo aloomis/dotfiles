@@ -1,0 +1,32 @@
+#
+# zsh_prompt
+#
+
+git_prompt() {
+	# Return if we are not inside a working tree.
+	! git rev-parse --is-inside-work-tree 2> /dev/null | grep -q 'true' \
+			&& return 1
+
+	# Get the branch name or the commit hash in a "detached HEAD" state.
+	local br="$(git symbolic-ref --quiet --short HEAD 2> /dev/null \
+			|| git rev-parse --short HEAD 2> /dev/null)"
+
+	# Build the status string.
+	# Adds "+" for uncommitted changes.
+	# Adds "!" for unstaged changes.
+	# Adds "?" for untracked files.
+	local st="";
+	! git diff --quiet --ignore-submodules --cached && st+="+";
+	! git diff --quiet --ignore-submodules && st+="!";
+	[[ -n $(git ls-files --others --exclude-standard) ]] && st+="?"
+
+	echo "[$br$st]"
+}
+
+# Setup the command prompt.
+PROMPT="%F{11}[%~]%(#.#.$)%f "
+
+precmd() {
+  # Update the prompt directly instead of enabling "prompt_substr".
+  RPROMPT="%F{8}$(git_prompt)%f"
+}
