@@ -7,9 +7,11 @@
 typeset -u path
 path=(~/bin $path)
 
+# Run the ssh-agent once and cache the environment variables.
+pgrep -u $USER ssh-agent >/dev/null || ssh-agent > ~/.ssh-agent-env
+eval "$(<~/.ssh-agent-env)" >/dev/null
+
 # Automatically start X on tty1.
-if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  exec startx 2> ~/.xsession-errors
-fi
+[[ ! $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx 2> ~/.xsession-errors
 
 # vim: set ft=sh:
