@@ -2,7 +2,7 @@
 
 if [[ -z "$BLOCK_INSTANCE" ]]; then
   echo "Missing required interface"
-  exit 0
+  exit 1
 fi
 
 # interface IEEE 802.11  ESSID:"NNN"
@@ -18,15 +18,14 @@ config=$(iwconfig $BLOCK_INSTANCE)
 # If there is no power then assume the interface is off.
 power=$(echo $config | sed -nr 's/.*Tx-Power=([0-9]*).*/\1/p')
 if [[ -z "$power" ]]; then
-  exit 0
+  exit 1
 fi
 
 # If there is no ssid then assume there is no connection (iwgetid is a
 # convenient method for getting the SSID from iwconfig).
 ssid=$(iwgetid -r $BLOCK_INSTANCE)
 if [[ -z "$ssid" ]]; then
-  echo "×"
-  exit 0
+  exit 1
 fi
 
 # Scale the link quality from [0-100].
