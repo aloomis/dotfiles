@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+num_updates=$(checkupdates | wc -l)
+if [ "$num_updates" == "0" ]; then
+  exit 0
+fi
+
+ICON="" # fa-download
+
+# Font Awesome 5 does not include the space character and Pango seems to have
+# trouble falling back to a different font without this.
+PANGO_SPACE="<span fallback='true'> </span>"
+
+echo "$ICON$PANGO_SPACE$num_updates Update"

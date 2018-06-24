@@ -30,6 +30,9 @@ min_width=64
 separator_block_width=24
 markup=pango
 
+[updates]
+interval=60
+
 #[bluetooth]
 #interval=5
 
