@@ -11,6 +11,9 @@
 # Set LS_COLORS based on the configuration in ~/.dircolors.
 [[ -f ~/.dircolors ]] && eval `dircolors -b ~/.dircolors`
 
+# Set the default editor to be neovim.
+VISUAL=nvim
+
 #
 # Setup aliases.
 #
@@ -21,5 +24,8 @@ alias ll="ls -Fhl --color=auto"
 
 # Enable color by default.
 alias grep="grep --color"
+
+# Always use neovim.
+alias vim=nvim
 
 # vim: set ft=sh:
