@@ -45,6 +45,9 @@ colorscheme gruvbox
 " Use the same background as the terminal.
 hi Normal ctermbg=NONE
 
+" Remove the background from the buftabline plugin.
+hi BufTabLineFill ctermbg=NONE
+
 " Automatically reload buffers that changed outside of vim.
 set autoread
 
