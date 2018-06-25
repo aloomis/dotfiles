@@ -37,6 +37,7 @@
 ! i3 Window Manager ------------------------------------------------------------
 
 #define _dark #202020
+#define _archblue #1793d1
 
 i3wm.font: xft:Roboto 12
 
@@ -45,7 +46,7 @@ i3wm.font: xft:Roboto 12
 ! text: Text on the titlebar.
 ! indicator: The side of the border in a split container.
 ! child_border: The border around the window.
-i3wm.Client.focused:         _bg0 _bg0 _fg1 _bg4 _bg4
+i3wm.Client.focused:         _bg0 _bg0 _fg1 _archblue _archblue
 i3wm.Client.focusedInactive: _bg0 _bg0 _bg4 _bg0 _bg0
 i3wm.Client.unfocused:       _bg0 _bg0 _bg4 _bg0 _bg0
 i3wm.Client.urgent:          _bg0 _bg0 _bg4 _red _red
