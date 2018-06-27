@@ -12,7 +12,7 @@
 [[ -f ~/.dircolors ]] && eval `dircolors -b ~/.dircolors`
 
 # Set the default editor to be neovim.
-VISUAL=nvim
+export VISUAL=nvim
 
 #
 # Setup aliases.
