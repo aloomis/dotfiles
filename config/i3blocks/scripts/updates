@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 
+
 num_updates=$(checkupdates | wc -l)
-if [ "$num_updates" == "0" ]; then
-  exit 0
-fi
+case $num_updates in
+	0) exit 0 ;;
+	1) update_str="1 Update" ;;
+	*) update_str="$num_updates Updates" ;;
+esac
 
 ICON="" # fa-download
 
@@ -11,4 +14,4 @@ ICON="" # fa-download
 # trouble falling back to a different font without this.
 PANGO_SPACE="<span fallback='true'> </span>"
 
-echo "$ICON$PANGO_SPACE$num_updates Update"
+echo "$ICON$PANGO_SPACE$update_str"
