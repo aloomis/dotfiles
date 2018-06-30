@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ICON= # fa-exchange
+ICON= # fa-exchange-alt
 
 # Font Awesome 5 does not include the space character and Pango seems to have
 # trouble falling back to a different font without this.
