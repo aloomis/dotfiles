@@ -11,6 +11,9 @@ path=(~/bin $path)
 pgrep -u $USER ssh-agent >/dev/null || ssh-agent > ~/.ssh-agent-env
 eval "$(<~/.ssh-agent-env)" >/dev/null
 
+# Remap the caps locks to the escape button.
+setxkbmap -options caps:escape
+
 # Automatically start X on tty1.
 [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx 2> ~/.xsession-errors
 
