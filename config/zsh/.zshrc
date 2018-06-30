@@ -13,6 +13,17 @@
 
 # Set the default editor to be neovim.
 export VISUAL=nvim
+export EDITOR=$VISUAL
+
+# Increase the default command history.
+export HISTSIZE=10000
+export SAVEHIST=$HISTSIZE
+export HISTFILE=~/.zsh_history
+
+# Ignore duplicates when searching the history.
+# Alternatively, HIST_IGNORE_ALL_DUPS could be used to prevent writing duplicate
+# entries to the history file.
+setopt HIST_FIND_NO_DUPS
 
 #
 # Setup aliases.
