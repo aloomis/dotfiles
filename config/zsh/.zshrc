@@ -25,6 +25,18 @@ export HISTFILE=~/.zsh_history
 # entries to the history file.
 setopt HIST_FIND_NO_DUPS
 
+# Reduce time to wait for multi-character sequences to 0.2 seconds.
+export KEYTIMEOUT=2
+
+# Enable vim mode in ZLE.
+bindkey -v
+
+# Enable vim search keybindings in command mode.
+bindkey -M vicmd "/" vi-history-search-forward
+bindkey -M vicmd "?" vi-history-search-backward
+bindkey -M vicmd "n" vi-repeat-search
+bindkey -M vicmd "N" vi-rev-repeat-search
+
 #
 # Setup aliases.
 #
