@@ -27,4 +27,7 @@ xss-lock -n dim-screen.sh -- i3lock-wrapper.sh &
 # inactivity. On an LCD there is not much difference between the three.
 xset dpms 0 0 150
 
+# Remap the caps locks to the escape button.
+setxkbmap -option caps:escape
+
 exec i3
