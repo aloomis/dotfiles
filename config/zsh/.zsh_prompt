@@ -2,7 +2,7 @@
 # zsh_prompt
 #
 
-git_prompt() {
+prompt_git() {
   # Return if we are not inside a working tree.
   ! git rev-parse --is-inside-work-tree 2> /dev/null | grep -q 'true' \
       && return 1
@@ -23,7 +23,7 @@ git_prompt() {
   echo "[$br$st]"
 }
 
-vim_prompt() {
+prompt_vim() {
   if [ "$KEYMAP" = "vicmd" ]; then
     echo "[NORMAL]"
   fi
@@ -32,20 +32,27 @@ vim_prompt() {
 # Setup the command prompt.
 PROMPT="%F{11}[%~]%(#.#.$)%f "
 
-update_right_prompt() {
+prompt_update_right() {
+  # Build the prompt from right to left adding a space on the left to separate
+  # any subsequent sections. Since this is on the right side, having an extra
+  # space in the front does not matter.
+  local pr=""
+  local gp="$(prompt_git)" && [[ ! -z "$gp" ]] && pr=" $gp$pr"
+  local vp="$(prompt_vim)" && [[ ! -z "$vp" ]] && pr=" $vp$pr"
+
   # Update the prompt directly instead of enabling "prompt_substr".
-  RPROMPT="%F{8}$(vim_prompt)$(git_prompt)%f"
+  RPROMPT="%F{8}$pr%f"
 }
 
 # This hook is executed before each prompt. However, it is not re-executed when
 # the command line is redrawn.
 precmd() {
-  update_right_prompt
+  prompt_update_right
 }
 
 # Implement the ZLE widget that updates the prompt whenever the keymap changes.
 zle-keymap-select() {
-  update_right_prompt
+  prompt_update_right
   zle reset-prompt
 }
 
