@@ -19,7 +19,7 @@ Xcursor.size: 32
 
 URxvt.urgentOnBell:    true
 URxvt.perl-lib:        /usr/lib/urxvt/perl
-URxvt.perl-ext-common: default,clipboard,url-select
+URxvt.perl-ext-common: default,clipboard,selection-to-clipboard,url-select
 URxvt.iso14755:        false
 URxvt.iso14755_52:     false
 
