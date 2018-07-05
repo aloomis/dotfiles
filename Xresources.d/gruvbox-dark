@@ -102,23 +102,4 @@ URxvt.background:  _bg0
 URxvt.foreground:  _fg1
 URxvt.cursorColor: _fg1
 
-! ROFI -------------------------------------------------------------------------
-
-rofi.font:            Roboto 12
-rofi.window-format:   {c} {t}
-rofi.separator-style: none
-rofi.hide-scrollbar:  true
-rofi.color-enabled:   true
-rofi.width:           36
-rofi.lines:           8
-rofi.padding:         32
-
-!------------------ bg ---- border --- separator -------------------------------
-rofi.color-window: _bg0,   _bg0,      _bg0
-
-!------------------ bg ---- fg ------- bg-alt - hi-bg - hi-fg ------------------
-rofi.color-normal: _bg0,   _bg4,      _bg0,    _bg1,   _brwhite
-rofi.color-urgent: _bg0,   _red,      _bg0,    _bg1,   _red
-rofi.color-active: _bg0,   _blue,     _bg0,    _bg1,   _blue
-
 ! vim: set ft=xdefaults:

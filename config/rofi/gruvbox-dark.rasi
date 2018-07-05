@@ -1,0 +1,60 @@
+* {
+  color-foreground: #a89984;
+  color-background: #202020;
+  color-active: #458588;
+  color-prompt: #d79921;
+  color-urgent: #cc241d;
+
+  font: "Roboto 12";
+  text-color: @color-foreground;
+  background-color: @color-background;
+}
+
+#window {
+  fullscreen: true;
+}
+
+#mainbox {
+  margin: 40%;
+}
+
+#prompt {
+  text-color: @color-prompt;
+}
+
+#textbox-prompt-colon {
+  str: ": ";
+  expand: false;
+  text-color: @color-prompt;
+}
+
+#inputbar {
+  children: [prompt, textbox-prompt-colon, entry, case-indicator];
+}
+
+#element {
+  padding: 1px 0px;
+}
+
+#element .active {
+  text-color: @color-active;
+}
+
+#element .urgent {
+  text-color: @color-urgent;
+}
+
+#element selected {
+  text-color: @color-background;
+  background-color: @color-foreground;
+}
+
+#element selected.active {
+  background-color: @color-active;
+}
+
+#element selected.urgent {
+  background-color: @color-urgent;
+}
+
+/* vim: set ft=css: */
