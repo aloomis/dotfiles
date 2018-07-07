@@ -23,17 +23,20 @@ export HISTFILE=~/.zsh_history
 # entries to the history file.
 setopt HIST_FIND_NO_DUPS
 
-# Reduce time to wait for multi-character sequences to 0.2 seconds.
-export KEYTIMEOUT=2
-
-# Enable vim mode in ZLE.
+# Enable vi mode in ZLE.
 bindkey -v
 
-# Enable vim search keybindings in command mode.
-bindkey -M vicmd "/" vi-history-search-backward
-bindkey -M vicmd "?" vi-history-search-forward
-bindkey -M vicmd "n" vi-repeat-search
-bindkey -M vicmd "N" vi-rev-repeat-search
+# Reduce time to wait for multi-character sequences to 0.1 seconds. This speeds
+# up ZLE vi mode transitions significantly.
+export KEYTIMEOUT=1
+
+# Enable incremental search key-bindings.
+bindkey -M vicmd '/' history-incremental-search-backward
+bindkey -M vicmd '?' history-incremental-search-forward
+
+# Begin searches with arrow keys
+bindkey "^[OA" up-line-or-beginning-search
+bindkey "^[OB" down-line-or-beginning-search
 
 # Load additional dotfiles.
 [[ -f $ZDOTDIR/.zsh_prompt ]] && . $ZDOTDIR/.zsh_prompt
