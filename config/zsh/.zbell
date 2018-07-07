@@ -1,0 +1,47 @@
+#
+# $ZDOTDIR/.zbell
+#
+# Triggers a bell when a command takes longer than $zbell_duration seconds.
+
+# Ignore non-interactive shells.
+[[ ! -o interactive ]] && return
+
+# Loads the datetime module to get $EPOCHSECONDS.
+zmodload zsh/datetime
+
+# The minimum duration in seconds required to trigger the bell.
+zbell_duration="${zbell_duration-10}"
+
+# The last command and time in seconds it was made.
+zbell_command=""
+zbell_timestamp="0"
+
+zbell_begin() {
+  zbell_command=$1
+  zbell_timestamp=$EPOCHSECONDS
+}
+
+zbell_end() {
+  # Reset the zbell_command. Hitting enter with an empty command does not
+  # trigger the preexec hook. Reset the command to ensure that we only process
+  # each command one time.
+  local last_zbell_command=$zbell_command
+  zbell_command=""
+
+  # If there is no command then return.
+  [[ -z $last_zbell_command ]] && return
+
+  # If it has not been more than zbell_duration seconds then return.
+  local ring=$(( $EPOCHSECONDS - $zbell_timestamp > $zbell_duration ))
+  [[ $ring -eq "0" ]] && return
+
+  # Ring the bell!
+  echo -en "\a"
+}
+
+# Hook up the bell functions to the preexec and precmd hooks.
+autoload -Uz add-zsh-hook
+add-zsh-hook preexec zbell_begin
+add-zsh-hook precmd zbell_end
+
+# vim: set ft=sh:

@@ -6,8 +6,6 @@
 # Setup environment variables.
 #
 
-[[ -f $ZDOTDIR/.zsh_prompt ]] && . $ZDOTDIR/.zsh_prompt
-
 # Set LS_COLORS based on the configuration in ~/.dircolors.
 [[ -f ~/.dircolors ]] && eval `dircolors -b ~/.dircolors`
 
@@ -20,8 +18,8 @@ export HISTSIZE=10000
 export SAVEHIST=$HISTSIZE
 export HISTFILE=~/.zsh_history
 
-# Ignore duplicates when searching the history.
-# Alternatively, HIST_IGNORE_ALL_DUPS could be used to prevent writing duplicate
+# Ignore duplicates when searching the history. Alternatively,
+# HIST_IGNORE_ALL_DUPS could be used to prevent writing duplicate
 # entries to the history file.
 setopt HIST_FIND_NO_DUPS
 
@@ -36,6 +34,10 @@ bindkey -M vicmd "/" vi-history-search-backward
 bindkey -M vicmd "?" vi-history-search-forward
 bindkey -M vicmd "n" vi-repeat-search
 bindkey -M vicmd "N" vi-rev-repeat-search
+
+# Load additional dotfiles.
+[[ -f $ZDOTDIR/.zsh_prompt ]] && . $ZDOTDIR/.zsh_prompt
+[[ -f $ZDOTDIR/.zbell ]] && . $ZDOTDIR/.zbell
 
 #
 # Setup aliases.
