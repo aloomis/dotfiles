@@ -49,7 +49,7 @@ bindkey "^[OB" down-line-or-beginning-search
 
 # Enable indicators, human readable sizes, and color by default.
 alias ls="ls -Fh --color=auto"
-alias ll="ls -Fhl --color=auto"
+alias ll="ls -alFh --color=auto"
 
 # Enable color by default.
 alias grep="grep --color"
