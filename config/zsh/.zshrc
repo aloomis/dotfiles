@@ -39,7 +39,7 @@ bindkey "^[OA" up-line-or-beginning-search
 bindkey "^[OB" down-line-or-beginning-search
 
 # Load additional dotfiles.
-[[ -f $ZDOTDIR/.zsh_prompt ]] && . $ZDOTDIR/.zsh_prompt
+[[ -f $ZDOTDIR/.zprompt ]] && . $ZDOTDIR/.zprompt
 [[ -f $ZDOTDIR/.zbell ]] && . $ZDOTDIR/.zbell
 [[ -f $ZDOTDIR/.zfuzz ]] && . $ZDOTDIR/.zfuzz
 
