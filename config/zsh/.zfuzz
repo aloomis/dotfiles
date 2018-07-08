@@ -1,3 +1,8 @@
+#
+# $ZDOTDIR/.zfuzz
+#
+# Configures FZF as a fuzzy finder in the shell.
+
 # Ignore non-interactive shells.
 [[ ! -o interactive ]] && return
 
@@ -5,7 +10,7 @@
 [[ ! -d "/usr/share/fzf" ]] && return
 
 # The file to search for in the directory hierarchy that contains the set of
-# paths that should be searched over.
+# paths that should be searched.
 zfuzz_filter_name="${zfuzz_filter_name-.fuzz_filter}"
 
 # Add the FZF completion options and key-bindings.
