@@ -41,6 +41,7 @@ bindkey "^[OB" down-line-or-beginning-search
 # Load additional dotfiles.
 [[ -f $ZDOTDIR/.zsh_prompt ]] && . $ZDOTDIR/.zsh_prompt
 [[ -f $ZDOTDIR/.zbell ]] && . $ZDOTDIR/.zbell
+[[ -f $ZDOTDIR/.zfuzz ]] && . $ZDOTDIR/.zfuzz
 
 #
 # Setup aliases.

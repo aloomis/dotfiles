@@ -1,0 +1,78 @@
+# Ignore non-interactive shells.
+[[ ! -o interactive ]] && return
+
+# Return if FZF is not installed in the expected location.
+[[ ! -d "/usr/share/fzf" ]] && return
+
+# The file to search for in the directory hierarchy that contains the set of
+# paths that should be searched over.
+zfuzz_filter_name="${zfuzz_filter_name-.fuzz_filter}"
+
+# Add the FZF completion options and key-bindings.
+# * Ctrl-T for file selection.
+# * Ctrl-R for history search.
+# * Alt-C for directory change.
+source "/usr/share/fzf/completion.zsh"
+source "/usr/share/fzf/key-bindings.zsh"
+
+export FZF_DEFAULT_OPTS="
+  --no-bold
+  --inline-info
+  --color fg:-1,bg:-1,hl:3,fg+:-1,bg+:237,hl+:3
+  --color info:7,spinner:7,prompt:3,pointer:3,marker:1
+"
+
+# Prints the absolute path of a file in the directory hierarchy that matches the
+# zfuzz_filter_name. Returns 0 if such a file is found and 1 otherwise.
+_zfuzz_find_filter_file() {
+  local directory=$PWD
+  while [ $directory != "/" ]; do
+    local filter_file="$directory/$zfuzz_filter_name"
+    if [[ -f $filter_file ]]; then
+      echo "$filter_file"
+      return 0
+    fi
+    directory=$(dirname $directory)
+  done
+  return 1
+}
+
+# Updates the FZF commands to respect any filter file found in the current
+# directory hierarchy.
+_zfuzz_update_commands() {
+  # Inlining the local keyword seems to clobber the return value.
+  local filter_file
+  filter_file=$(_zfuzz_find_filter_file)
+  if [[ $? -ne 0 ]]; then
+    # Reset the commands to their default values.
+    export FZF_DEFAULT_COMMAND=""
+    export FZF_CTRL_T_COMMAND=""
+    return 0
+  fi
+
+  local line
+  local -a fuzz_paths
+  local base_name=$(dirname $filter_file)
+  while read line; do
+    # Assumes that each line gives a directory relative to the location of the
+    # filter file. Resolve the full path relative to the current working
+    # directory and then skips any directories that are not descendants.
+    local resolved="$(realpath --relative-to=$PWD $base_name/$line)"
+    [[ $resolved = ..* ]] && continue || fuzz_paths+=($resolved)
+  done < $filter_file
+
+  # If there are any valid paths then use ripgrep to list the files in them.
+  [[ ${#fuzz_paths} -ne 0 ]] \
+    && export FZF_DEFAULT_COMMAND="rg --hidden --files $fuzz_paths" \
+    || export FZF_DEFAULT_COMMAND=""
+  export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
+}
+
+# Set the commands the first time through.
+_zfuzz_update_commands
+
+# Update them whenever the current directory is changed.
+autoload -Uz add-zsh-hook
+add-zsh-hook chpwd _zfuzz_update_commands
+
+# vim: set ft=sh:
