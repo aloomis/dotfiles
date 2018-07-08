@@ -1,7 +1,7 @@
 #
 # $ZDOTDIR/.zbell
 #
-# Triggers a bell when a command takes longer than $zbell_duration seconds.
+# Triggers the bell when a command takes longer than $zbell_duration seconds.
 
 # Ignore non-interactive shells.
 [[ ! -o interactive ]] && return
@@ -16,12 +16,12 @@ zbell_duration="${zbell_duration-10}"
 zbell_command=""
 zbell_timestamp="0"
 
-zbell_begin() {
+_zbell_begin() {
   zbell_command=$1
   zbell_timestamp=$EPOCHSECONDS
 }
 
-zbell_end() {
+_zbell_end() {
   # Reset the zbell_command. Hitting enter with an empty command does not
   # trigger the preexec hook. Reset the command to ensure that we only process
   # each command one time.
@@ -41,7 +41,7 @@ zbell_end() {
 
 # Hook up the bell functions to the preexec and precmd hooks.
 autoload -Uz add-zsh-hook
-add-zsh-hook preexec zbell_begin
-add-zsh-hook precmd zbell_end
+add-zsh-hook preexec _zbell_begin
+add-zsh-hook precmd _zbell_end
 
 # vim: set ft=sh:
