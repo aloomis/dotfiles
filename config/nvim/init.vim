@@ -12,11 +12,9 @@ Plugin 'VundleVim/Vundle.vim'
 " Additional plugins.
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'ap/vim-buftabline'
-Plugin 'embear/vim-localvimrc'
 Plugin 'itchyny/lightline.vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 
