@@ -21,8 +21,8 @@ source "/usr/share/fzf/completion.zsh"
 source "/usr/share/fzf/key-bindings.zsh"
 
 export FZF_DEFAULT_OPTS="
+  --no-height
   --no-bold
-  --inline-info
   --color fg:-1,bg:-1,hl:3,fg+:-1,bg+:237,hl+:3
   --color info:7,spinner:7,prompt:3,pointer:3,marker:1
 "
