@@ -4,7 +4,6 @@ set nocompatible
 " Initialize vundle.
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=~/.fzf
 call vundle#begin()
 
 " Required.
@@ -14,6 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'ap/vim-buftabline'
 Plugin 'embear/vim-localvimrc'
+Plugin 'itchyny/lightline.vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-fugitive'
@@ -42,11 +42,17 @@ let g:gruvbox_invert_tabline=1
 let g:solarized_italic=1
 colorscheme gruvbox
 
+let g:lightline = {}
+let g:lightline.colorscheme = 'gruvbox'
+
 " Use the same background as the terminal.
 hi Normal ctermbg=NONE
 
 " Remove the background from the buftabline plugin.
 hi BufTabLineFill ctermbg=NONE
+
+" Remove the mode--replaced by lightline.
+set noshowmode
 
 " Automatically reload buffers that changed outside of vim.
 set autoread
