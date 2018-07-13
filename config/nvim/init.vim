@@ -121,14 +121,12 @@ nnoremap <leader>em :e ~/.vimrc.machine<cr>
 " Source $MYVIMRC.
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
-" Replace word under cursor.
-nnoremap <leader>r :%s/\<<c-r><c-w>\>/
+" Replace word under cursor using vim abolish.
+nnoremap <leader>r :%S/<c-r><c-w>/
 
-" Convert selection to camel case.
-vnoremap <leader>cc :s/_\(\l\)/\u\1/g<cr>
-
-" Pastes from clipboard.
+" Yank and paste to and from clipboard.
 nnoremap <leader>p "+p
+vnoremap <leader>y "+y
 
 " Quit and save all windows.
 nnoremap ZA :wqa<cr>
@@ -140,13 +138,14 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 " Launch FZF.
-nnoremap <c-f> :FZF<cr>
+nnoremap <c-t> :FZF<cr>
 
 " Strip white space on save.
 autocmd BufWritePre * call StripWhiteSpaces()
 function! StripWhiteSpaces()
     let l:winview=winsaveview()
     :%s/\s\+$//e
+    :%s/\($\n\s*\)\+\%$//e
     call winrestview(l:winview)
 endfunction
 

@@ -36,8 +36,8 @@
 
 ! i3 Window Manager ------------------------------------------------------------
 
-#define _dark #202020
-#define _archblue #1793d1
+#define _archDark #202020
+#define _archBlue #1793d1
 
 i3wm.font: xft:Roboto 12
 
@@ -46,24 +46,24 @@ i3wm.font: xft:Roboto 12
 ! text: Text on the titlebar.
 ! indicator: The side of the border in a split container.
 ! child_border: The border around the window.
-i3wm.Client.focused:         _bg0 _bg0 _fg1 _archblue _archblue
-i3wm.Client.focusedInactive: _bg0 _bg0 _bg4 _bg0 _bg0
-i3wm.Client.unfocused:       _bg0 _bg0 _bg4 _bg0 _bg0
-i3wm.Client.urgent:          _bg0 _bg0 _bg4 _red _red
-i3wm.Client.placeholder:     _bg0 _bg0 _bg4 _bg0 _bg0
+i3wm.Client.focused:         _bg0 _bg0 _fg1 _archBlue _archBlue
+i3wm.Client.focusedInactive: _bg0 _bg0 _bg4 _bg0      _bg0
+i3wm.Client.unfocused:       _bg0 _bg0 _bg4 _bg0      _bg0
+i3wm.Client.urgent:          _bg0 _bg0 _bg4 _red      _red
+i3wm.Client.placeholder:     _bg0 _bg0 _bg4 _bg0      _bg0
 i3wm.Client.background:      _bg0
 
 i3wm.Bar.font:       pango:Roboto, Font Awesome 5 Free 12
 i3wm.Bar.foreground: _fg4
-i3wm.Bar.background: _dark
+i3wm.Bar.background: _archDark
 
 ! border: Border of the workspace indicator.
 ! background: Background of the workspace indicator.
 ! text: Text of the workspace indicator.
-i3wm.Bar.focused:  _fg4  _fg4  _dark
-i3wm.Bar.active:   _dark _dark _fg4
-i3wm.Bar.inactive: _dark _dark _fg4
-i3wm.Bar.urgent:   _red  _red  _dark
+i3wm.Bar.focused:  _fg4      _fg4      _archDark
+i3wm.Bar.active:   _archDark _archDark _fg4
+i3wm.Bar.inactive: _archDark _archDark _fg4
+i3wm.Bar.urgent:   _red      _red      _archDark
 
 i3blocks.Battery.charging:    _fg0
 i3blocks.Battery.warning:     _orange
@@ -75,7 +75,7 @@ i3blocks.Volume.modified:     _magenta
 ! URXVT ------------------------------------------------------------------------
 
 URxvt.font:           xft:Hack:size=12
-URxvt.lineSpace:      2
+URxvt.lineSpace:      0
 URxvt.letterSpace:    0
 URxvt.scrollBar:      false
 URxvt.cursorBlink:    true
