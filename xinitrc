@@ -18,9 +18,9 @@ urxvtd -q -o -f
 # Restore the previous nitrogen wallpaper
 nitrogen --restore
 
-# Activate the screen saver (dim the screen) after 60 seconds of inactivity and
+# Activate the screen saver (dim the screen) after 120 seconds of inactivity and
 # the screen locker after the first burn in cycle (another 60 seconds).
-xset s 60 60
+xset s 120 60
 xss-lock -n dim-screen.sh -- i3lock-wrapper.sh &
 
 # Disabled standby and suspend. Turn the screen off after 150 seconds of
