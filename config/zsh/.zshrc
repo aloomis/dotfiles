@@ -18,10 +18,10 @@ export HISTSIZE=10000
 export SAVEHIST=$HISTSIZE
 export HISTFILE=~/.zsh_history
 
-# Ignore duplicates when searching the history. Alternatively,
-# HIST_IGNORE_ALL_DUPS could be used to prevent writing duplicate
-# entries to the history file.
-setopt HIST_FIND_NO_DUPS
+# Prevent writing duplicate entries to the history file. Alternatively,
+# HIST_FIND_NO_DUPS could be used to ignore duplicates while searching the
+# history.
+setopt HIST_IGNORE_ALL_DUPS
 
 # Enable vi mode in ZLE.
 bindkey -v
